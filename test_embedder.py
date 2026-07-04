@@ -171,3 +171,40 @@ cases = [
 for q, a in cases:
     detail = ar.score_detailed(q, a)
     print(f"  {detail['overall']} ({detail['interpretation']}) — {detail['answer']}")
+
+
+
+
+# Test the full evaluate() function
+print("\n" + "="*50)
+print("TESTING FULL BHARATRAG EVALUATE()")
+print("="*50)
+
+from bharatrag import evaluate
+
+results = evaluate(
+    questions=[
+        "भारत की राजधानी क्या है?",
+        "पीएम किसान योजना क्या है?",
+    ],
+    contexts=[
+        ["भारत की राजधानी नई दिल्ली है।",
+         "नई दिल्ली में संसद भवन है।"],
+        ["पीएम किसान सम्मान निधि किसानों के लिए योजना है।",
+         "इस योजना में 6000 रुपये सालाना मिलते हैं।"],
+    ],
+    answers=[
+        "भारत की राजधानी नई दिल्ली है।",
+        "पीएम किसान योजना में किसानों को 6000 रुपये मिलते हैं।",
+    ],
+    language="hindi"
+)
+
+print("\n📊 BharatRAG Evaluation Results:")
+print(f"  Context Relevance:  {results['context_relevance']}")
+print(f"  Groundedness:       {results['groundedness']}")
+print(f"  Answer Relevance:   {results['answer_relevance']}")
+print(f"  ─────────────────────────────")
+print(f"  Overall Score:      {results['overall']}")
+print(f"  Language:           {results['language']}")
+print(f"  Questions scored:   {results['num_questions']}")
