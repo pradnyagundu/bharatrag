@@ -3,6 +3,7 @@ BharatRAG — RAG Evaluation Library for Indian Languages
 Author: Pradnya Gundu
 """
 
+from bharatrag.embeddings.indic_embeddings import IndicEmbedder
 from bharatrag.metrics.context_relevance import ContextRelevance
 from bharatrag.metrics.groundedness import Groundedness
 from bharatrag.metrics.answer_relevance import AnswerRelevance
@@ -34,12 +35,17 @@ def evaluate(questions, contexts, answers, language="hindi"):
         ... )
         >>> print(results)
     """
-    print(f"Evaluating {len(questions)} question(s) in {language}...")
+    print(f"\nLoading embedding model for {language}...")
 
-    # Load all 3 metrics once
-    cr = ContextRelevance(language=language)
-    gr = Groundedness(language=language)
-    ar = AnswerRelevance(language=language)
+    # Load embedder ONCE and share across all 3 metrics
+    embedder = IndicEmbedder(language=language)
+
+    # Pass the same embedder to all metrics — no reloading
+    cr = ContextRelevance(language=language, embedder=embedder)
+    gr = Groundedness(language=language, embedder=embedder)
+    ar = AnswerRelevance(language=language, embedder=embedder)
+
+    print(f"Evaluating {len(questions)} question(s) in {language}...")
 
     cr_scores = []
     gr_scores = []
@@ -53,16 +59,14 @@ def evaluate(questions, contexts, answers, language="hindi"):
         gr_scores.append(gr.score(answer, context))
         ar_scores.append(ar.score(question, answer))
 
-    # Average each metric across all questions
     results = {
-        "context_relevance":  round(sum(cr_scores) / len(cr_scores), 4),
-        "groundedness":       round(sum(gr_scores) / len(gr_scores), 4),
-        "answer_relevance":   round(sum(ar_scores) / len(ar_scores), 4),
-        "language":           language,
-        "num_questions":      len(questions),
+        "context_relevance": round(sum(cr_scores) / len(cr_scores), 4),
+        "groundedness":      round(sum(gr_scores) / len(gr_scores), 4),
+        "answer_relevance":  round(sum(ar_scores) / len(ar_scores), 4),
+        "language":          language,
+        "num_questions":     len(questions),
     }
 
-    # Overall score = average of all 3
     results["overall"] = round(
         (results["context_relevance"] +
          results["groundedness"] +
