@@ -6,7 +6,17 @@ that actually understand Hindi and Marathi.
 import logging
 from sentence_transformers import SentenceTransformer
 import numpy as np
-from sklearn.metrics.pairwise import cosine_similarity
+
+
+def _cosine_similarity_matrix(a: np.ndarray, b: np.ndarray) -> np.ndarray:
+    """Compute cosine similarity between every row of a and every row of b.
+
+    Equivalent to sklearn.metrics.pairwise.cosine_similarity but without
+    pulling in scikit-learn as a dependency.
+    """
+    a_norm = a / np.linalg.norm(a, axis=1, keepdims=True)
+    b_norm = b / np.linalg.norm(b, axis=1, keepdims=True)
+    return a_norm @ b_norm.T
 
 
 logger = logging.getLogger(__name__)
@@ -108,7 +118,7 @@ class IndicEmbedder:
         """
         emb1 = self.embed(text1).reshape(1, -1)
         emb2 = self.embed(text2).reshape(1, -1)
-        score = cosine_similarity(emb1, emb2)[0][0]
+        score = float(_cosine_similarity_matrix(emb1, emb2)[0][0])
         # Clip to [0, 1] — cosine can return tiny negatives
         return float(np.clip(score, 0.0, 1.0))
 
@@ -126,5 +136,5 @@ class IndicEmbedder:
         """
         query_emb = self.embed(query).reshape(1, -1)
         candidate_embs = self.embed_batch(candidates)
-        scores = cosine_similarity(query_emb, candidate_embs)[0]
+        scores = _cosine_similarity_matrix(query_emb, candidate_embs)[0]
         return [float(np.clip(s, 0.0, 1.0)) for s in scores]

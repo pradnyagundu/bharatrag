@@ -12,6 +12,10 @@ class Groundedness:
 
     def __init__(self, language: str = "hindi",
                  threshold: float = 0.45, embedder=None):
+        if not 0.0 <= threshold <= 1.0:
+            raise ValueError(
+                f"threshold must be between 0 and 1, got {threshold}"
+            )
         self.language = language
         self.threshold = threshold
         self.embedder = embedder or IndicEmbedder(language=language)
