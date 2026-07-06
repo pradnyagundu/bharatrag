@@ -3,9 +3,13 @@ Indic Embeddings — loads multilingual embedding models
 that actually understand Hindi and Marathi.
 """
 
+import logging
 from sentence_transformers import SentenceTransformer
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
+
+
+logger = logging.getLogger(__name__)
 
 
 # Best free models for Indian languages
@@ -15,11 +19,17 @@ INDIC_MODELS = {
     "english": "sentence-transformers/all-MiniLM-L6-v2",
 }
 
+# Module-level cache: one SentenceTransformer instance per language
+_model_cache = {}
+
 
 class IndicEmbedder:
     """
     Loads the right embedding model for a given Indian language
     and computes sentence embeddings + similarity scores.
+
+    Models are cached globally — re-creating an IndicEmbedder for the same
+    language reuses the already-loaded model without downloading again.
 
     Example:
         >>> embedder = IndicEmbedder(language="hindi")
@@ -43,10 +53,20 @@ class IndicEmbedder:
 
         self.language = language
         self.model_name = INDIC_MODELS[language]
+        self.model = self._load_model(language, self.model_name)
 
-        print(f"Loading embedding model for {language}: {self.model_name}")
-        self.model = SentenceTransformer(self.model_name)
-        print("Model loaded successfully!")
+    @staticmethod
+    def _load_model(language: str, model_name: str) -> SentenceTransformer:
+        """Load model from module-level cache, or download and cache it."""
+        if language not in _model_cache:
+            logger.info(
+                "Loading embedding model for %s: %s", language, model_name
+            )
+            _model_cache[language] = SentenceTransformer(model_name)
+            logger.info("Model loaded successfully!")
+        else:
+            logger.debug("Reusing cached model for %s", language)
+        return _model_cache[language]
 
     def embed(self, text: str) -> np.ndarray:
         """
