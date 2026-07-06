@@ -24,6 +24,18 @@ class TestIndicEmbedder:
         embedder = IndicEmbedder(language="hindi")
         assert embedder is not None
 
+    def test_supported_language_marathi(self):
+        embedder = IndicEmbedder(language="marathi")
+        assert embedder is not None
+
+    def test_supported_language_tamil(self):
+        embedder = IndicEmbedder(language="tamil")
+        assert embedder is not None
+
+    def test_supported_language_bengali(self):
+        embedder = IndicEmbedder(language="bengali")
+        assert embedder is not None
+
     def test_unsupported_language_raises_error(self):
         with pytest.raises(ValueError):
             IndicEmbedder(language="klingon")
@@ -40,6 +52,24 @@ class TestIndicEmbedder:
             "भारत की राजधानी क्या है?",
             "भारत की राजधानी नई दिल्ली है।"
         )
+        assert 0.0 <= score <= 1.0
+
+    def test_similarity_tamil(self):
+        embedder = IndicEmbedder(language="tamil")
+        score = embedder.similarity(
+            "PM கிசான் திட்டத்தில் எவ்வளவு பணம் வழங்கப்படுகிறது?",
+            "PM கிசான் திட்டத்தில் விவசாயிகளுக்கு ஆண்டுக்கு 6000 ரூபாய் மூன்று தவணைகளில் வழங்கப்படுகிறது."
+        )
+        assert isinstance(score, float)
+        assert 0.0 <= score <= 1.0
+
+    def test_similarity_bengali(self):
+        embedder = IndicEmbedder(language="bengali")
+        score = embedder.similarity(
+            "প্রধানমন্ত্রী মুদ্রা যোজনা কী?",
+            "এটি ছোট ব্যবসার জন্য একটি ঋণ প্রকল্প।"
+        )
+        assert isinstance(score, float)
         assert 0.0 <= score <= 1.0
 
     def test_similar_sentences_score_higher_than_unrelated(

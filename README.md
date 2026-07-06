@@ -130,15 +130,17 @@ print(score)  # 0.61
 |---|---|
 | Hindi | `sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2` |
 | Marathi | `l3cube-pune/marathi-sentence-bert-nli` |
+| Tamil | `sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2` |
+| Bengali | `sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2` |
 | English | `sentence-transformers/all-MiniLM-L6-v2` |
 
-More languages coming soon — Tamil, Bengali, Gujarati.
+More languages coming soon — Gujarati, Telugu, Kannada.
 
 ---
 
 ## Benchmark Dataset
 
-BharatRAG ships with a hand-curated benchmark dataset of **20 Hindi + Marathi QA pairs** across:
+BharatRAG ships with a hand-curated benchmark dataset of **70 Hindi, Marathi, Tamil, and Bengali QA pairs** across:
 - Government schemes (PM Kisan, Ayushman Bharat, Jan Dhan, Ujjwala)
 - Health (diabetes, sanitation)
 - Agriculture (wheat sowing, crop insurance)
@@ -152,9 +154,10 @@ Dataset location: `data/benchmark.json`
 
 ## Project Structure
 
+```text
 bharatrag/
 ├── bharatrag/
-│   ├── init.py          # evaluate() function
+│   ├── __init__.py          # evaluate() function
 │   ├── embeddings/
 │   │   └── indic_embeddings.py   # Indic embedding models
 │   └── metrics/
@@ -162,11 +165,12 @@ bharatrag/
 │       ├── groundedness.py       # Metric 2
 │       └── answer_relevance.py   # Metric 3
 ├── data/
-│   └── benchmark.json       # 20 Hindi+Marathi QA pairs
+│   └── benchmark.json       # 70 Indic QA pairs
 ├── tests/
-│   └── test_metrics.py      # 21 pytest tests
+│   └── test_metrics.py      # 31 pytest tests
 └── examples/
-└── run_benchmark.py     # Benchmark runner
+    └── run_benchmark.py     # Benchmark runner
+```
 
 ---
 
@@ -197,9 +201,9 @@ Tests run automatically on every PR via [GitHub Actions](https://github.com/prad
 
 - [x] Hindi support
 - [x] Marathi support
-- [x] 20-example benchmark dataset
-- [ ] Tamil support
-- [ ] Bengali support
+- [x] Tamil support
+- [x] Bengali support
+- [x] 70-example benchmark dataset
 - [ ] 100-example benchmark dataset
 - [ ] LangChain integration
 - [ ] LlamaIndex integration
