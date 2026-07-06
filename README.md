@@ -140,7 +140,7 @@ More languages coming soon — Gujarati, Telugu, Kannada.
 
 ## Benchmark Dataset
 
-BharatRAG ships with a hand-curated benchmark dataset of **50 Hindi, Marathi, Tamil, and Bengali QA pairs** across:
+BharatRAG ships with a hand-curated benchmark dataset of **70 Hindi, Marathi, Tamil, and Bengali QA pairs** across:
 - Government schemes (PM Kisan, Ayushman Bharat, Jan Dhan, Ujjwala)
 - Health (diabetes, sanitation)
 - Agriculture (wheat sowing, crop insurance)
@@ -165,9 +165,9 @@ bharatrag/
 │       ├── groundedness.py       # Metric 2
 │       └── answer_relevance.py   # Metric 3
 ├── data/
-│   └── benchmark.json       # 50 Indic QA pairs
+│   └── benchmark.json       # 70 Indic QA pairs
 ├── tests/
-│   └── test_metrics.py      # 28 pytest tests
+│   └── test_metrics.py      # 31 pytest tests
 └── examples/
     └── run_benchmark.py     # Benchmark runner
 ```
