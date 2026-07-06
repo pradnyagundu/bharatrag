@@ -8,11 +8,26 @@ from bharatrag.metrics.context_relevance import ContextRelevance
 from bharatrag.metrics.groundedness import Groundedness
 from bharatrag.metrics.answer_relevance import AnswerRelevance
 
-__version__ = "0.1.0"
+
+__all__ = ["evaluate"]
+
+try:
+    from importlib.metadata import version as _metadata_version
+    __version__ = _metadata_version("bharatrag")
+except Exception:
+    # Fallback for source-directory / editable usage
+    __version__ = "0.1.0"
 __author__ = "Pradnya Gundu"
 
+_SUPPORTED_LANGUAGES = ("hindi", "marathi", "english")
 
-def evaluate(questions, contexts, answers, language="hindi"):
+
+def evaluate(
+    questions: list[str],
+    contexts: list[list[str]],
+    answers: list[str],
+    language: str = "hindi",
+) -> dict:
     """
     Evaluate a RAG system on Indian language data.
 
@@ -25,6 +40,10 @@ def evaluate(questions, contexts, answers, language="hindi"):
     Returns:
         dict with scores for each metric
 
+    Raises:
+        TypeError:  if questions/contexts/answers are not lists
+        ValueError: if lengths mismatch, inputs empty, or language unsupported
+
     Example:
         >>> from bharatrag import evaluate
         >>> results = evaluate(
@@ -35,6 +54,24 @@ def evaluate(questions, contexts, answers, language="hindi"):
         ... )
         >>> print(results)
     """
+    # ── Input validation (fail fast before model load) ────────────
+    if not (isinstance(questions, list) and isinstance(contexts, list) and isinstance(answers, list)):
+        raise TypeError("questions, contexts, and answers must be lists")
+    if contexts and not all(isinstance(c, list) for c in contexts):
+        raise TypeError("each element of contexts must be a list")
+    if not questions:
+        raise ValueError("at least one question is required")
+    if len(questions) != len(contexts) or len(questions) != len(answers):
+        raise ValueError(
+            f"length mismatch: questions={len(questions)}, "
+            f"contexts={len(contexts)}, answers={len(answers)}"
+        )
+    if language not in _SUPPORTED_LANGUAGES:
+        raise ValueError(
+            f"unsupported language: {language!r}. "
+            f"choose from: {_SUPPORTED_LANGUAGES}"
+        )
+
     print(f"\nLoading embedding model for {language}...")
 
     # Load embedder ONCE and share across all 3 metrics

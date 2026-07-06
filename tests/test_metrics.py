@@ -214,3 +214,27 @@ class TestEvaluate:
             language="hindi"
         )
         assert results["num_questions"] == 2
+
+
+# ── evaluate() input validation tests (fast — no model loading) ─
+class TestEvaluateValidation:
+
+    def test_empty_questions_raises_value_error(self):
+        with pytest.raises(ValueError, match="at least one question"):
+            evaluate([], [[]], ["answer"])
+
+    def test_length_mismatch_raises_value_error(self):
+        with pytest.raises(ValueError, match="length mismatch"):
+            evaluate(["q1", "q2"], [["c1"]], ["a1", "a2"])
+
+    def test_wrong_type_questions_raises_type_error(self):
+        with pytest.raises(TypeError):
+            evaluate("not-a-list", [[]], ["answer"])
+
+    def test_wrong_type_contexts_raises_type_error(self):
+        with pytest.raises(TypeError):
+            evaluate(["q"], ["not-a-list"], ["a"])
+
+    def test_unsupported_language_raises_value_error(self):
+        with pytest.raises(ValueError, match="unsupported language"):
+            evaluate(["q"], [["c"]], ["a"], language="klingon")
