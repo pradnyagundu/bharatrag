@@ -13,6 +13,21 @@ authors = [
     {name = "Pradnya Gundu", email = "gundupradnya@gmail.com"}
 ]
 keywords = ["RAG", "evaluation", "Hindi", "Marathi", "Indic", "NLP", "LLM"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Natural Language :: Hindi",
+    "Natural Language :: Marathi",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
 dependencies = [
     "sentence-transformers>=2.2.0",
     "numpy>=1.24.0",

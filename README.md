@@ -6,6 +6,7 @@ Open-source RAG evaluation library for Indian languages (Hindi, Marathi). pip in
 
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![CI](https://github.com/pradnyagundu/bharatrag/actions/workflows/tests.yml/badge.svg)](https://github.com/pradnyagundu/bharatrag/actions/workflows/tests.yml)
 [![GitHub](https://img.shields.io/badge/GitHub-bharatrag-black.svg)](https://github.com/pradnyagundu/bharatrag)
 
 BharatRAG is the first open-source RAG evaluation library built specifically for **Indian languages (Hindi and Marathi)**. 
@@ -172,10 +173,11 @@ bharatrag/
 ## Running Tests
 
 ```bash
-pip install pytest
+pip install -e ".[dev]"
 pytest tests/ -v
-# 21 passed ✅
 ```
+
+Tests run automatically on every PR via [GitHub Actions](https://github.com/pradnyagundu/bharatrag/actions/workflows/tests.yml).
 
 ---
 
@@ -223,9 +225,12 @@ MIT License — free to use, modify, and distribute.
 
 ## Contributing
 
-Contributions welcome! Especially:
+Contributions welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for setup, code style, and what we're looking for.
+
+Especially looking for:
 - New Indian language support
 - More benchmark QA pairs
 - Integration with LangChain/LlamaIndex
+- Test coverage improvements
 
-Open an issue or submit a PR on GitHub.
+Open an [issue](https://github.com/pradnyagundu/bharatrag/issues) or submit a PR on GitHub.
