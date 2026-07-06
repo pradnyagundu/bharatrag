@@ -4,6 +4,8 @@ Measures: Did we retrieve the right context for this question?
 Score 0-1. Higher = more relevant context retrieved.
 """
 
+import textwrap
+
 from bharatrag.embeddings.indic_embeddings import IndicEmbedder
 
 
@@ -30,7 +32,8 @@ class ContextRelevance:
         )
         chunks_detail = [
             {
-                "chunk": ctx[:100] + "..." if len(ctx) > 100 else ctx,
+                "chunk": textwrap.shorten(ctx, width=100, placeholder="...")
+                if len(ctx) > 100 else ctx,
                 "score": round(sim, 4)
             }
             for ctx, sim in zip(contexts, similarities)
