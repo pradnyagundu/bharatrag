@@ -11,7 +11,12 @@ from bharatrag.metrics.answer_relevance import AnswerRelevance
 
 __all__ = ["evaluate"]
 
-__version__ = "0.1.0"
+try:
+    from importlib.metadata import version as _metadata_version
+    __version__ = _metadata_version("bharatrag")
+except Exception:
+    # Fallback for source-directory / editable usage
+    __version__ = "0.1.0"
 __author__ = "Pradnya Gundu"
 
 _SUPPORTED_LANGUAGES = ("hindi", "marathi", "english")
