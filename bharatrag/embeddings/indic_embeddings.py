@@ -26,6 +26,8 @@ logger = logging.getLogger(__name__)
 INDIC_MODELS = {
     "hindi": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
     "marathi": "l3cube-pune/marathi-sentence-bert-nli",
+    "tamil": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "bengali": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
     "english": "sentence-transformers/all-MiniLM-L6-v2",
 }
 
