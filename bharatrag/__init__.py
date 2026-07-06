@@ -65,12 +65,12 @@ def evaluate(
     if not isinstance(answers, list):
         raise TypeError("answers must be a list")
     if len(questions) == 0:
-        raise ValueError("questions list cannot be empty")
+        raise ValueError("at least one question is required")
     if len(questions) != len(contexts) or len(questions) != len(answers):
-        raise ValueError("questions, contexts, and answers must have the same length")
+        raise ValueError("length mismatch: questions, contexts, and answers must have the same length")
     if language not in _SUPPORTED_LANGUAGES:
         raise ValueError(
-            f"Language '{language}' not supported. "
+            f"unsupported language '{language}'. "
             f"Choose from: {list(_SUPPORTED_LANGUAGES)}"
         )
     for i, ctx in enumerate(contexts):
