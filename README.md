@@ -203,7 +203,7 @@ Tests run automatically on every PR via [GitHub Actions](https://github.com/prad
 - [x] Marathi support
 - [x] Tamil support
 - [x] Bengali support
-- [x] 30-example benchmark dataset
+- [x] 70-example benchmark dataset
 - [ ] 100-example benchmark dataset
 - [ ] LangChain integration
 - [ ] LlamaIndex integration
