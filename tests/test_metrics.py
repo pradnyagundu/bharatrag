@@ -143,6 +143,15 @@ class TestGroundedness:
         assert "claims" in result
         assert "total_claims" in result
         assert result["total_claims"] == 2
+    
+    # Verify sentences split correctly without breaking on decimals or abbreviations
+    def test_split_into_claims_decimals_and_abbreviations(self, hindi_embedder):
+        gr=Groundedness(language="hindi",embedder=hindi_embedder)
+        text = "पीएम किसान योजना के तहत किसानों को 1.5 लाख रुपये मिलते हैं। डॉ. राम ने कहा कि यह योजना अच्छी है।"
+        claims = gr._split_into_claims(text)
+        assert len(claims) == 2
+        assert "1.5" in claims[0]
+        assert "डॉ. राम" in claims[1]
 
 
 # ── AnswerRelevance tests ───────────────────────────────────────

@@ -21,8 +21,28 @@ class Groundedness:
         self.embedder = embedder or IndicEmbedder(language=language)
 
     def _split_into_claims(self, text: str) -> list:
-        sentences = re.split(r'[।\.!\?]+', text)
-        return [s.strip() for s in sentences if s.strip()]
+        # Protect decimal numbers from being split.
+        text = re.sub(r'(\d)\.(\d)', r'\1<DECIMAL_POINT>\2', text)
+        # Protect common abbreviations dots 
+        abbreviations = [
+            "डॉ", "पं", "प्रो", "श्री", "श्रीमती",
+            "Dr", "Mr", "Mrs", "Ms", "Prof", "e.g", "i.e", "vs"
+        ]
+        for abbr in abbreviations:
+            text = re.sub(rf'(^|\s){abbr}[\.।]', r'\1' + f'{abbr}<ABBR_DOT>', text)
+         # Split into actual sentence terminators (। (purna viram), !, ?, or dot with space/ending)
+        raw_sentences = re.split(r'(?:[।!?]\s*|\.\s+|\.$)', text)
+        # Clean up white spaces and restore original abbreviation dots
+        sentences = []
+        for s in raw_sentences:
+            s = s.strip()
+            if not s:
+                continue 
+            s = s.replace('<DECIMAL_POINT>', '.')
+            s = s.replace('<ABBR_DOT>', '.')
+            sentences.append(s)
+            
+        return sentences
 
     def score(self, answer: str, contexts: list) -> float:
         if not answer or not contexts:

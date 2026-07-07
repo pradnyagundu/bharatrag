@@ -30,6 +30,7 @@ def evaluate(
     contexts: list,
     answers: list,
     language: str = "hindi",
+    groundedness_threshold=0.45 #Sensitivity threshold for claim context matching
 ) -> dict:
     """
     Evaluate a RAG system on Indian language data.
@@ -83,7 +84,7 @@ def evaluate(
     embedder = IndicEmbedder(language=language)
 
     cr = ContextRelevance(language=language, embedder=embedder)
-    gr = Groundedness(language=language, embedder=embedder)
+    gr = Groundedness(language=language, threshold=groundedness_threshold, embedder=embedder) #Initialized metric with the user defined sensitivity threshold
     ar = AnswerRelevance(language=language, embedder=embedder)
 
     logger.info(f"Evaluating {len(questions)} question(s) in {language}...")
