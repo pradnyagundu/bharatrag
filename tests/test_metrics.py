@@ -19,7 +19,6 @@ def hindi_embedder():
 
 # ── IndicEmbedder tests ─────────────────────────────────────────
 class TestIndicEmbedder:
-
     def test_supported_language_hindi(self):
         embedder = IndicEmbedder(language="hindi")
         assert embedder is not None
@@ -30,35 +29,28 @@ class TestIndicEmbedder:
 
     def test_similarity_returns_float(self, hindi_embedder):
         score = hindi_embedder.similarity(
-            "भारत की राजधानी क्या है?",
-            "भारत की राजधानी नई दिल्ली है।"
+            "भारत की राजधानी क्या है?", "भारत की राजधानी नई दिल्ली है।"
         )
         assert isinstance(score, float)
 
     def test_similarity_between_0_and_1(self, hindi_embedder):
         score = hindi_embedder.similarity(
-            "भारत की राजधानी क्या है?",
-            "भारत की राजधानी नई दिल्ली है।"
+            "भारत की राजधानी क्या है?", "भारत की राजधानी नई दिल्ली है।"
         )
         assert 0.0 <= score <= 1.0
 
-    def test_similar_sentences_score_higher_than_unrelated(
-        self, hindi_embedder
-    ):
+    def test_similar_sentences_score_higher_than_unrelated(self, hindi_embedder):
         similar_score = hindi_embedder.similarity(
-            "भारत की राजधानी क्या है?",
-            "भारत की राजधानी नई दिल्ली है।"
+            "भारत की राजधानी क्या है?", "भारत की राजधानी नई दिल्ली है।"
         )
         unrelated_score = hindi_embedder.similarity(
-            "भारत की राजधानी क्या है?",
-            "आज मौसम बहुत अच्छा है।"
+            "भारत की राजधानी क्या है?", "आज मौसम बहुत अच्छा है।"
         )
         assert similar_score > unrelated_score
 
     def test_similarity_one_to_many_returns_list(self, hindi_embedder):
         scores = hindi_embedder.similarity_one_to_many(
-            "भारत की राजधानी क्या है?",
-            ["नई दिल्ली राजधानी है।", "मौसम अच्छा है।"]
+            "भारत की राजधानी क्या है?", ["नई दिल्ली राजधानी है।", "मौसम अच्छा है।"]
         )
         assert isinstance(scores, list)
         assert len(scores) == 2
@@ -66,19 +58,14 @@ class TestIndicEmbedder:
 
 # ── ContextRelevance tests ──────────────────────────────────────
 class TestContextRelevance:
-
-    def test_relevant_context_scores_higher_than_irrelevant(
-        self, hindi_embedder
-    ):
+    def test_relevant_context_scores_higher_than_irrelevant(self, hindi_embedder):
         cr = ContextRelevance(language="hindi", embedder=hindi_embedder)
 
         relevant_score = cr.score(
-            question="भारत की राजधानी क्या है?",
-            contexts=["भारत की राजधानी नई दिल्ली है।"]
+            question="भारत की राजधानी क्या है?", contexts=["भारत की राजधानी नई दिल्ली है।"]
         )
         irrelevant_score = cr.score(
-            question="भारत की राजधानी क्या है?",
-            contexts=["आज क्रिकेट मैच था।"]
+            question="भारत की राजधानी क्या है?", contexts=["आज क्रिकेट मैच था।"]
         )
         assert relevant_score > irrelevant_score
 
@@ -89,30 +76,23 @@ class TestContextRelevance:
 
     def test_score_between_0_and_1(self, hindi_embedder):
         cr = ContextRelevance(language="hindi", embedder=hindi_embedder)
-        score = cr.score(
-            "भारत की राजधानी क्या है?",
-            ["भारत की राजधानी नई दिल्ली है।"]
-        )
+        score = cr.score("भारत की राजधानी क्या है?", ["भारत की राजधानी नई दिल्ली है।"])
         assert 0.0 <= score <= 1.0
 
     def test_score_detailed_returns_dict(self, hindi_embedder):
         cr = ContextRelevance(language="hindi", embedder=hindi_embedder)
-        result = cr.score_detailed(
-            "भारत की राजधानी क्या है?",
-            ["नई दिल्ली राजधानी है।"]
-        )
+        result = cr.score_detailed("भारत की राजधानी क्या है?", ["नई दिल्ली राजधानी है।"])
         assert "overall" in result
         assert "chunks" in result
 
 
 # ── Groundedness tests ──────────────────────────────────────────
 class TestGroundedness:
-
     def test_grounded_answer_scores_high(self, hindi_embedder):
         gr = Groundedness(language="hindi", embedder=hindi_embedder)
         score = gr.score(
             answer="भारत की राजधानी नई दिल्ली है।",
-            contexts=["भारत की राजधानी नई दिल्ली है।"]
+            contexts=["भारत की राजधानी नई दिल्ली है।"],
         )
         assert score >= 0.5
 
@@ -130,7 +110,7 @@ class TestGroundedness:
         gr = Groundedness(language="hindi", embedder=hindi_embedder)
         score = gr.score(
             answer="भारत की राजधानी नई दिल्ली है।",
-            contexts=["भारत की राजधानी नई दिल्ली है।"]
+            contexts=["भारत की राजधानी नई दिल्ली है।"],
         )
         assert 0.0 <= score <= 1.0
 
@@ -138,15 +118,15 @@ class TestGroundedness:
         gr = Groundedness(language="hindi", embedder=hindi_embedder)
         result = gr.score_detailed(
             answer="दिल्ली राजधानी है। मुंबई बड़ा शहर है।",
-            contexts=["दिल्ली भारत की राजधानी है।"]
+            contexts=["दिल्ली भारत की राजधानी है।"],
         )
         assert "claims" in result
         assert "total_claims" in result
         assert result["total_claims"] == 2
-    
+
     # Verify sentences split correctly without breaking on decimals or abbreviations
     def test_split_into_claims_decimals_and_abbreviations(self, hindi_embedder):
-        gr=Groundedness(language="hindi",embedder=hindi_embedder)
+        gr = Groundedness(language="hindi", embedder=hindi_embedder)
         text = "पीएम किसान योजना के तहत किसानों को 1.5 लाख रुपये मिलते हैं। डॉ. राम ने कहा कि यह योजना अच्छी है।"
         claims = gr._split_into_claims(text)
         assert len(claims) == 2
@@ -156,19 +136,14 @@ class TestGroundedness:
 
 # ── AnswerRelevance tests ───────────────────────────────────────
 class TestAnswerRelevance:
-
-    def test_relevant_answer_scores_higher_than_irrelevant(
-        self, hindi_embedder
-    ):
+    def test_relevant_answer_scores_higher_than_irrelevant(self, hindi_embedder):
         ar = AnswerRelevance(language="hindi", embedder=hindi_embedder)
 
         relevant = ar.score(
-            question="भारत की राजधानी क्या है?",
-            answer="भारत की राजधानी नई दिल्ली है।"
+            question="भारत की राजधानी क्या है?", answer="भारत की राजधानी नई दिल्ली है।"
         )
         irrelevant = ar.score(
-            question="भारत की राजधानी क्या है?",
-            answer="आज मौसम बहुत अच्छा है।"
+            question="भारत की राजधानी क्या है?", answer="आज मौसम बहुत अच्छा है।"
         )
         assert relevant > irrelevant
 
@@ -179,22 +154,18 @@ class TestAnswerRelevance:
 
     def test_score_between_0_and_1(self, hindi_embedder):
         ar = AnswerRelevance(language="hindi", embedder=hindi_embedder)
-        score = ar.score(
-            "भारत की राजधानी क्या है?",
-            "भारत की राजधानी नई दिल्ली है।"
-        )
+        score = ar.score("भारत की राजधानी क्या है?", "भारत की राजधानी नई दिल्ली है।")
         assert 0.0 <= score <= 1.0
 
 
 # ── Full evaluate() tests ───────────────────────────────────────
 class TestEvaluate:
-
     def test_evaluate_returns_all_keys(self):
         results = evaluate(
             questions=["भारत की राजधानी क्या है?"],
             contexts=[["भारत की राजधानी नई दिल्ली है।"]],
             answers=["भारत की राजधानी नई दिल्ली है।"],
-            language="hindi"
+            language="hindi",
         )
         assert "context_relevance" in results
         assert "groundedness" in results
@@ -208,7 +179,7 @@ class TestEvaluate:
             questions=["भारत की राजधानी क्या है?"],
             contexts=[["भारत की राजधानी नई दिल्ली है।"]],
             answers=["भारत की राजधानी नई दिल्ली है।"],
-            language="hindi"
+            language="hindi",
         )
         assert 0.0 <= results["context_relevance"] <= 1.0
         assert 0.0 <= results["groundedness"] <= 1.0
@@ -220,14 +191,13 @@ class TestEvaluate:
             questions=["सवाल १", "सवाल २"],
             contexts=[["context १"], ["context २"]],
             answers=["जवाब १", "जवाब २"],
-            language="hindi"
+            language="hindi",
         )
         assert results["num_questions"] == 2
 
 
 # ── evaluate() input validation tests (fast — no model loading) ─
 class TestEvaluateValidation:
-
     def test_empty_questions_raises_value_error(self):
         with pytest.raises(ValueError, match="at least one question"):
             evaluate([], [[]], ["answer"])
@@ -247,3 +217,28 @@ class TestEvaluateValidation:
     def test_unsupported_language_raises_value_error(self):
         with pytest.raises(ValueError, match="unsupported language"):
             evaluate(["q"], [["c"]], ["a"], language="klingon")
+
+
+# ── Integration tests ────────────────────────
+class TestIntegrations:
+    def test_langchain_evaluator(self, hindi_embedder):
+        from bharatrag.integrations.langchain import BharatRAGLangChainEvaluator
+
+        # Test basic initialization
+        evaluator = BharatRAGLangChainEvaluator(metric="groundedness", language="hindi")
+        assert evaluator is not None
+        assert evaluator.requires_input is True
+        assert evaluator.requires_reference is True
+
+        # Test evaluating strings
+        result = evaluator._evaluate_strings(
+            prediction="पीएम किसान योजना के तहत किसानों को 1.5 लाख रुपये मिलते हैं। डॉ. राम ने कहा कि यह योजना अच्छी है।",
+            reference="पीएम किसान योजना के तहत किसानों को 1.5 लाख रुपये मिलते हैं। डॉ. राम ने कहा कि यह योजना अच्छी है।",
+            input="पीएम किसान योजना में कितने रुपये मिलते हैं?",
+        )
+        assert "score" in result
+        assert result["score"] == 1.0
+
+    def test_llamaindex_evaluator_raises_importerror_without_dependency(self):
+        with pytest.raises(ImportError, match="Could not import llama_index"):
+            from bharatrag.integrations.llamaindex import BharatRAGLlamaIndexEvaluator
