@@ -1,17 +1,15 @@
-# bharatrag
-Open-source RAG evaluation library for Indian languages (Hindi, Marathi). pip install bharatrag
 # BharatRAG 🇮🇳
 
 **RAG Evaluation Library for Indian Languages**
 
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![CI](https://github.com/pradnyagundu/bharatrag/actions/workflows/tests.yml/badge.svg)](https://github.com/pradnyagundu/bharatrag/actions/workflows/tests.yml)
-[![GitHub](https://img.shields.io/badge/GitHub-bharatrag-black.svg)](https://github.com/pradnyagundu/bharatrag)
+[![PyPI](https://img.shields.io/pypi/v/bharatrag.svg)](https://pypi.org/project/bharatrag/)
+[![Tests](https://github.com/pradnyagundu/bharatrag/actions/workflows/tests.yml/badge.svg)](https://github.com/pradnyagundu/bharatrag/actions)
 
-BharatRAG is the first open-source RAG evaluation library built specifically for **Indian languages (Hindi and Marathi)**. 
+BharatRAG is the first open-source RAG evaluation library built specifically for **Indian languages (Hindi, Marathi, Tamil)**.
 
-Existing tools like RAGAS are built and tested on English data. BharatRAG fills the gap — giving developers a reliable way to measure RAG quality in Indic languages.
+Existing tools like RAGAS are built and tested on English data. BharatRAG fills the gap — giving developers a reliable way to measure RAG quality in Indic languages, with no API key and no cost.
 
 ---
 
@@ -23,9 +21,7 @@ RAG (Retrieval Augmented Generation) systems are being deployed across India for
 - EdTech platforms for vernacular learners
 - Banking and insurance customer support
 
-But there is **no standard way to evaluate** whether these systems are actually working correctly in Hindi, Marathi, or other Indian languages.
-
-RAGAS — the most popular RAG evaluation tool — uses English-first embedding models that produce unreliable scores for Indic text.
+But there is **no standard way to evaluate** whether these systems are actually working correctly in Hindi, Marathi, or other Indian languages. RAGAS — the most popular RAG evaluation tool — uses English-first embedding models that produce unreliable scores for Indic text.
 
 **BharatRAG solves this.**
 
@@ -33,29 +29,13 @@ RAGAS — the most popular RAG evaluation tool — uses English-first embedding 
 
 ## What it measures
 
-BharatRAG computes the **RAG Triad** in Hindi and Marathi:
+BharatRAG computes the **RAG Triad** in Indian languages:
 
 | Metric | Question it answers |
 |---|---|
 | **Context Relevance** | Did we retrieve the right documents? |
 | **Groundedness** | Is the answer based on the context, or hallucinated? |
 | **Answer Relevance** | Does the answer actually address the question? |
-
----
-
-## Benchmark Results
-
-BharatRAG evaluated on 20 Hindi + Marathi QA pairs across government schemes, health, and agriculture domains:
-
-| Metric | Hindi ✅ Correct | Hindi ❌ Hallucinated | Marathi ✅ Correct | Marathi ❌ Hallucinated |
-|---|---|---|---|---|
-| Context Relevance | 0.4793 | 0.4793 | 0.4327 | 0.4327 |
-| Groundedness | 0.9167 | 0.7000 | 0.9667 | 0.2000 |
-| Answer Relevance | 0.6221 | 0.5417 | 0.5072 | 0.2959 |
-| **Overall** | **0.6727** | **0.5737** | **0.6355** | **0.3095** |
-
-BharatRAG correctly scores hallucinated answers **lower** than correct answers in both languages.
-Marathi hallucination detection shows a **2x difference** in overall score (0.6355 vs 0.3095).
 
 ---
 
@@ -93,17 +73,25 @@ print(results)
 # }
 ```
 
-### Marathi support
+### Marathi
 
 ```python
 results = evaluate(
     questions=["पीएम किसान योजनेत किती रुपये मिळतात?"],
-    contexts=[[
-        "पीएम किसान सन्मान निधी योजनेंतर्गत शेतकऱ्यांना",
-        "दरवर्षी 6000 रुपये तीन हप्त्यांमध्ये मिळतात."
-    ]],
+    contexts=[["पीएम किसान सन्मान निधी योजनेंतर्गत शेतकऱ्यांना दरवर्षी 6000 रुपये मिळतात."]],
     answers=["पीएम किसान योजनेत 6000 रुपये मिळतात."],
     language="marathi"
+)
+```
+
+### Tamil
+
+```python
+results = evaluate(
+    questions=["பிஎம் கிசான் திட்டத்தில் எவ்வளவு பணம் கிடைக்கிறது?"],
+    contexts=[["பிஎம் கிசான் திட்டத்தின் கீழ் விவசாயிகளுக்கு ஆண்டுக்கு 6000 ரூபாய் கிடைக்கிறது."]],
+    answers=["பிஎம் கிசான் திட்டத்தில் 6000 ரூபாய் கிடைக்கிறது."],
+    language="tamil"
 )
 ```
 
@@ -111,8 +99,6 @@ results = evaluate(
 
 ```python
 from bharatrag.metrics.context_relevance import ContextRelevance
-from bharatrag.metrics.groundedness import Groundedness
-from bharatrag.metrics.answer_relevance import AnswerRelevance
 
 cr = ContextRelevance(language="hindi")
 score = cr.score(
@@ -124,48 +110,89 @@ print(score)  # 0.61
 
 ---
 
+## Framework Integrations
+
+BharatRAG plugs directly into LangChain and LlamaIndex — evaluate Indic RAG systems inside your existing pipelines.
+
+### LangChain
+
+```bash
+pip install bharatrag[langchain]
+```
+
+```python
+from bharatrag.integrations import BharatRAGLangChainEvaluator
+
+evaluator = BharatRAGLangChainEvaluator(metric="groundedness", language="hindi")
+
+result = evaluator.evaluate_strings(
+    prediction="पीएम किसान योजना में 6000 रुपये मिलते हैं।",
+    reference="प्रधानमंत्री किसान सम्मान निधि योजना के तहत किसानों को 6000 रुपये मिलते हैं।",
+    input="पीएम किसान योजना में कितने रुपये मिलते हैं?"
+)
+print(result)  # {'score': 1.0}
+```
+
+### LlamaIndex
+
+```bash
+pip install bharatrag[llamaindex]
+```
+
+```python
+from bharatrag.integrations import BharatRAGLlamaIndexEvaluator
+
+evaluator = BharatRAGLlamaIndexEvaluator(metric="overall", language="hindi")
+
+result = evaluator.evaluate(
+    query="पीएम किसान योजना में कितने रुपये मिलते हैं?",
+    contexts=["प्रधानमंत्री किसान सम्मान निधि योजना के तहत किसानों को 6000 रुपये मिलते हैं।"],
+    response="पीएम किसान योजना में 6000 रुपये मिलते हैं।"
+)
+print(result.score)
+```
+
+---
+
 ## Supported Languages
 
+| Language | Embedding Model |
+|---|---|
 | Hindi | `sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2` |
 | Marathi | `l3cube-pune/marathi-sentence-bert-nli` |
 | Tamil | `l3cube-pune/tamil-sentence-bert-nli` |
 | English | `sentence-transformers/all-MiniLM-L6-v2` |
 
-More languages coming soon — Tamil, Bengali, Gujarati.
+More languages coming soon — Bengali, Gujarati, Punjabi.
 
 ---
 
 ## Benchmark Dataset
 
-BharatRAG ships with a hand-curated benchmark dataset of **20 Hindi + Marathi QA pairs** across:
+BharatRAG ships with a hand-curated benchmark dataset of **70 QA pairs** across Hindi, Marathi, and Tamil, spanning:
 - Government schemes (PM Kisan, Ayushman Bharat, Jan Dhan, Ujjwala)
-- Health (diabetes, sanitation)
-- Agriculture (wheat sowing, crop insurance)
-- Education (Mid Day Meal, Beti Bachao)
+- Agriculture (crop insurance, drip irrigation, organic farming)
+- Health (diabetes, TB, anaemia, sanitation)
+- Education (Mid Day Meal, Beti Bachao, NEP 2020)
+- Banking & Finance (UPI, KYC, net banking)
 
 Each example includes a correct answer and a hallucinated answer for evaluation testing.
 
-Dataset location: `data/benchmark.json`
+- **Location in repo:** `data/benchmark.json`
+- **On HuggingFace:** [PradnyaGundu/bharatrag-benchmark](https://huggingface.co/datasets/PradnyaGundu/bharatrag-benchmark)
 
 ---
 
-## Project Structure
+## Why BharatRAG?
 
-bharatrag/
-├── bharatrag/
-│   ├── init.py          # evaluate() function
-│   ├── embeddings/
-│   │   └── indic_embeddings.py   # Indic embedding models
-│   └── metrics/
-│       ├── context_relevance.py  # Metric 1
-│       ├── groundedness.py       # Metric 2
-│       └── answer_relevance.py   # Metric 3
-├── data/
-│   └── benchmark.json       # 20 Hindi+Marathi QA pairs
-├── tests/
-│   └── test_metrics.py      # 21 pytest tests
-└── examples/
-└── run_benchmark.py     # Benchmark runner
+| Feature | RAGAS | BharatRAG |
+|---|---|---|
+| English RAG evaluation | ✅ | ✅ |
+| Hindi RAG evaluation | ❌ Unreliable | ✅ |
+| Marathi / Tamil evaluation | ❌ Not supported | ✅ |
+| Indic benchmark dataset | ❌ | ✅ |
+| LangChain / LlamaIndex integration | ✅ | ✅ |
+| Free, no API key needed | ❌ (needs LLM judge) | ✅ Fully offline |
 
 ---
 
@@ -176,33 +203,33 @@ pip install -e ".[dev]"
 pytest tests/ -v
 ```
 
-Tests run automatically on every PR via [GitHub Actions](https://github.com/pradnyagundu/bharatrag/actions/workflows/tests.yml).
-
----
-
-## Why BharatRAG?
-
-| Feature | RAGAS | BharatRAG |
-|---|---|---|
-| English RAG evaluation | ✅ | ✅ |
-| Hindi RAG evaluation | ❌ Unreliable | ✅ |
-| Marathi RAG evaluation | ❌ Not supported | ✅ |
-| Indic benchmark dataset | ❌ | ✅ |
-| Free, no API key needed | ✅ | ✅ |
-
 ---
 
 ## Roadmap
 
 - [x] Hindi support
 - [x] Marathi support
-- [x] 20-example benchmark dataset
-- [ ] Tamil support
-- [ ] Bengali support
-- [ ] 100-example benchmark dataset
-- [ ] LangChain integration
-- [ ] LlamaIndex integration
-- [ ] HuggingFace Spaces demo
+- [x] Tamil support
+- [x] 70-example benchmark dataset
+- [x] LangChain integration
+- [x] LlamaIndex integration
+- [ ] Bengali, Gujarati, Punjabi support
+- [ ] Streamlit UI for interactive evaluation
+- [ ] Hinglish / code-switching support
+- [ ] Benchmarking vs RAGAS / DeepEval
+- [ ] Expand benchmark dataset to 500+ examples
+
+---
+
+## Contributors
+
+Huge thanks to the community contributors who've helped shape BharatRAG:
+
+- [@rishabh-108272](https://github.com/rishabh-108272) — LangChain & LlamaIndex integrations, groundedness bug fix
+- [@AshayK003](https://github.com/AshayK003) — CI improvements, model caching, logging, dependency cleanup
+- [@Yashwanth-Kumar-Kotla](https://github.com/Yashwanth-Kumar-Kotla) — language-agnostic benchmark runner
+
+Contributions welcome! See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ---
 
@@ -219,17 +246,3 @@ B.E. Artificial Intelligence & Data Science, APCOER Pune
 ## License
 
 MIT License — free to use, modify, and distribute.
-
----
-
-## Contributing
-
-Contributions welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for setup, code style, and what we're looking for.
-
-Especially looking for:
-- New Indian language support
-- More benchmark QA pairs
-- Integration with LangChain/LlamaIndex
-- Test coverage improvements
-
-Open an [issue](https://github.com/pradnyagundu/bharatrag/issues) or submit a PR on GitHub.
