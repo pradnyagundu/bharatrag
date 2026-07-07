@@ -222,7 +222,12 @@ class TestEvaluateValidation:
 # ── Integration tests ────────────────────────
 class TestIntegrations:
     def test_langchain_evaluator(self, hindi_embedder):
-        from bharatrag.integrations.langchain import BharatRAGLangChainEvaluator
+        try:
+            from bharatrag.integrations.langchain import BharatRAGLangChainEvaluator
+        except ImportError:
+            pytest.skip(
+                "Langchain dependencies are not installed. Skipping integration test."
+            )
 
         # Test basic initialization
         evaluator = BharatRAGLangChainEvaluator(metric="groundedness", language="hindi")
