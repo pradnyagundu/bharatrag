@@ -121,7 +121,7 @@ pip install bharatrag[langchain]
 ```
 
 ```python
-from bharatrag.integrations import BharatRAGLangChainEvaluator
+from bharatrag.integrations.langchain import BharatRAGLangChainEvaluator
 
 evaluator = BharatRAGLangChainEvaluator(metric="groundedness", language="hindi")
 
@@ -140,7 +140,7 @@ pip install bharatrag[llamaindex]
 ```
 
 ```python
-from bharatrag.integrations import BharatRAGLlamaIndexEvaluator
+from bharatrag.integrations.llamaindex import BharatRAGLlamaIndexEvaluator
 
 evaluator = BharatRAGLlamaIndexEvaluator(metric="overall", language="hindi")
 
