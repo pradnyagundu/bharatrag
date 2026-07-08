@@ -3,7 +3,6 @@ BharatRAG Test Suite
 Run with: pytest tests/ -v
 """
 
-from sympy.polys.polyconfig import query
 import pytest
 from bharatrag.embeddings.indic_embeddings import IndicEmbedder
 from bharatrag.metrics.context_relevance import ContextRelevance

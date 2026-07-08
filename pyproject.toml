@@ -43,6 +43,18 @@ langchain = [
 llamaindex = [
     "llama-index-core>=0.10.0",
 ]
+benchmarks = [
+    "datasets>=2.14.0,<3.0.0",
+    "matplotlib>=3.7.0",
+    "scipy>=1.10.0",
+    "pandas>=2.0.0",
+]
+ragas = [
+    "ragas>=0.1.0",
+]
+deepeval = [
+    "deepeval>=0.20.0",
+]
 
 [project.urls]
 Homepage = "https://github.com/pradnyagundu/bharatrag"
@@ -51,3 +63,8 @@ Repository = "https://github.com/pradnyagundu/bharatrag"
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["bharatrag*"]
+
+[tool.pytest.ini_options]
+markers = [
+    "integration: tests that require network access (deselected by default)",
+]

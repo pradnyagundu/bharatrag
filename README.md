@@ -205,6 +205,22 @@ pytest tests/ -v
 
 ---
 
+## Benchmarks
+
+BharatRAG is benchmarked against public Indic QA datasets (IndicQA, XQuAD)
+with optional comparison to RAGAS and DeepEval.
+
+📊 [View the latest benchmark report →](docs/benchmarks/latest_report.md)
+
+Run benchmarks locally:
+
+```bash
+pip install bharatrag[benchmarks]
+python scripts/benchmark_public_datasets.py --languages hindi tamil
+```
+
+---
+
 ## Roadmap
 
 - [x] Hindi support
@@ -216,7 +232,7 @@ pytest tests/ -v
 - [ ] Bengali, Gujarati, Punjabi support
 - [ ] Streamlit UI for interactive evaluation
 - [ ] Hinglish / code-switching support
-- [ ] Benchmarking vs RAGAS / DeepEval
+- [x] Benchmarking vs RAGAS / DeepEval
 - [ ] Expand benchmark dataset to 500+ examples
 
 ---

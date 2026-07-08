@@ -30,9 +30,8 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -e .
-        pip install pytest
+        pip install -e ".[dev,benchmarks]"
 
-    - name: Run tests
+    - name: Run tests (network-dependent tests excluded)
       run: |
-        pytest tests/ -v
+        pytest tests/ -v -m "not integration"

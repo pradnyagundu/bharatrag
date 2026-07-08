@@ -78,7 +78,7 @@ def evaluate(
         if not isinstance(ctx, list):
             raise TypeError(f"contexts[{i}] must be a list of strings")
 
-    logger.info(f"Loading embedding model for {language}...")
+    logger.debug(f"Loading embedding model for {language}...")
 
     # Load embedder ONCE and share across all 3 metrics
     embedder = IndicEmbedder(language=language)
@@ -93,13 +93,26 @@ def evaluate(
     gr_scores = []
     ar_scores = []
 
+    per_question_results = []
+
     for i, (question, context, answer) in enumerate(
         zip(questions, contexts, answers)
     ):
         logger.debug(f"Scoring question {i+1}/{len(questions)}...")
-        cr_scores.append(cr.score(question, context))
-        gr_scores.append(gr.score(answer, context))
-        ar_scores.append(ar.score(question, answer))
+        cr_score = cr.score(question, context)
+        gr_score = gr.score(answer, context)
+        ar_score = ar.score(question, answer)
+        
+        cr_scores.append(cr_score)
+        gr_scores.append(gr_score)
+        ar_scores.append(ar_score)
+        
+        per_question_results.append({
+            "context_relevance": cr_score,
+            "groundedness": gr_score,
+            "answer_relevance": ar_score,
+            "overall": round((cr_score + gr_score + ar_score) / 3, 4)
+        })
 
     results = {
         "context_relevance": round(sum(cr_scores) / len(cr_scores), 4),
@@ -107,6 +120,7 @@ def evaluate(
         "answer_relevance":  round(sum(ar_scores) / len(ar_scores), 4),
         "language":          language,
         "num_questions":     len(questions),
+        "per_question":      per_question_results,
     }
 
     results["overall"] = round(
