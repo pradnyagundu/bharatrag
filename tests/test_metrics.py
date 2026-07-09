@@ -248,8 +248,26 @@ class TestIntegrations:
         assert result["score"] == 1.0
 
     def test_llamaindex_evaluator_raises_importerror_without_dependency(self):
-        with pytest.raises(ImportError, match="Could not import llama_index"):
-            from bharatrag.integrations.llamaindex import BharatRAGLlamaIndexEvaluator
+        import sys
+
+        # Save original modules to restore them after the test
+        original_modules=sys.modules.copy()
+
+        #Prevent llama_index imports by setting them to None in sys.modules
+        sys.modules['llama_index']=None
+        sys.modules['llama_index.core.evaluation']=None
+
+        #Remove cached integration module to force Python to re-evaluate the import
+        if "bharatrag.integrations.llamaindex" in sys.modules:
+            del sys.modules["bharatrag.integrations.llamaindex"]
+
+            try:
+                with pytest.raises(ImportError, match="Could not import llama_index"):
+                    from bharatrag.integrations.llamaindex import BharatRAGLlamaIndexEvaluator
+            finally:
+                # Restore the original state of sys.modules
+                sys.modules.clear()
+        sys.modules.update(original_modules)
 
     # Mock integration test for llamaindex evaluator
     def test_llamaindex_evaluator_mocked(self):

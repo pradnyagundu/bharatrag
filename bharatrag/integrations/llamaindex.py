@@ -1,4 +1,4 @@
-from typing import Any, Optional, Sequence
+from typing import Any, Optional, Sequence, Dict
 from bharatrag import evaluate
 
 try:
@@ -25,6 +25,14 @@ class BharatRAGLlamaIndexEvaluator(BaseEvaluator):
         self.metric = metric
         self.language = language
         self.evaluation_kwargs = kwargs
+    
+    def _get_prompts(self) -> Dict[str, Any]:
+        """Get prompts"""
+        return {}
+    
+    def _update_prompts(self, prompts: Dict[str, Any]) -> None:
+        """Update prompts."""
+        pass
 
     def evaluate(
         self,
