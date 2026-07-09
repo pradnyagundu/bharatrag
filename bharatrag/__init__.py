@@ -22,7 +22,7 @@ except Exception:
 
 __author__ = "Pradnya Gundu"
 
-_SUPPORTED_LANGUAGES = ("hindi", "marathi", "tamil", "english")
+_SUPPORTED_LANGUAGES = ("hindi", "marathi", "tamil", "bengali", "english")
 
 
 def evaluate(
