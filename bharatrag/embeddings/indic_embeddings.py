@@ -14,8 +14,10 @@ def _cosine_similarity_matrix(a: np.ndarray, b: np.ndarray) -> np.ndarray:
     Equivalent to sklearn.metrics.pairwise.cosine_similarity but without
     pulling in scikit-learn as a dependency.
     """
-    a_norm = a / np.linalg.norm(a, axis=1, keepdims=True)
-    b_norm = b / np.linalg.norm(b, axis=1, keepdims=True)
+    a_n = np.maximum(np.linalg.norm(a, axis=1, keepdims=True), 1e-10)
+    b_n = np.maximum(np.linalg.norm(b, axis=1, keepdims=True), 1e-10)
+    a_norm = a / a_n
+    b_norm = b / b_n
     return a_norm @ b_norm.T
 
 

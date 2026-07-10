@@ -29,7 +29,8 @@ class Groundedness:
             "Dr", "Mr", "Mrs", "Ms", "Prof", "e.g", "i.e", "vs"
         ]
         for abbr in abbreviations:
-            text = re.sub(rf'(^|\s){abbr}[\.।]', r'\1' + f'{abbr}<ABBR_DOT>', text)
+            safe_abbr = re.escape(abbr)
+            text = re.sub(rf'(^|\s){safe_abbr}[\.।]', r'\1' + f'{abbr}<ABBR_DOT>', text)
          # Split into actual sentence terminators (। (purna viram), !, ?, or dot with space/ending)
         raw_sentences = re.split(r'(?:[।!?]\s*|\.\s+|\.$)', text)
         # Clean up white spaces and restore original abbreviation dots
@@ -63,6 +64,14 @@ class Groundedness:
         if not answer or not contexts:
             return {"overall": 0.0, "claims": []}
         claims = self._split_into_claims(answer)
+        if not claims:
+            return {
+                "overall": 0.0,
+                "supported": 0,
+                "total_claims": 0,
+                "claims": [],
+                "language": self.language
+            }
         claims_detail = []
         for claim in claims:
             similarities = self.embedder.similarity_one_to_many(

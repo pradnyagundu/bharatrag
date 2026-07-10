@@ -125,6 +125,16 @@ class TestGroundedness:
         assert "total_claims" in result
         assert result["total_claims"] == 2
 
+    def test_detailed_empty_claims_no_zero_division(self, hindi_embedder):
+        gr = Groundedness(language="hindi", embedder=hindi_embedder)
+        result = gr.score_detailed(
+            answer=".", # Only punctuation, generates empty claims
+            contexts=["दिल्ली भारत की राजधानी है।"],
+        )
+        assert result["overall"] == 0.0
+        assert result["total_claims"] == 0
+        assert result["claims"] == []
+
     # Verify sentences split correctly without breaking on decimals or abbreviations
     def test_split_into_claims_decimals_and_abbreviations(self, hindi_embedder):
         gr = Groundedness(language="hindi", embedder=hindi_embedder)
