@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "bharatrag"
-version = "0.1.6"
+version = "0.1.7"
 description = "RAG evaluation library for Indian languages (Hindi, Marathi)"
 readme = "README.md"
 license = "MIT"
