@@ -7,7 +7,7 @@
 [![PyPI](https://img.shields.io/pypi/v/bharatrag.svg)](https://pypi.org/project/bharatrag/)
 [![Tests](https://github.com/pradnyagundu/bharatrag/actions/workflows/tests.yml/badge.svg)](https://github.com/pradnyagundu/bharatrag/actions)
 
-BharatRAG is the first open-source RAG evaluation library built specifically for **Indian languages (Hindi, Marathi, Tamil)**.
+BharatRAG is the first open-source RAG evaluation library built specifically for **Indian languages (Hindi, Marathi, Tamil, Bengali, Telugu, Gujarati)**.
 
 Existing tools like RAGAS are built and tested on English data. BharatRAG fills the gap — giving developers a reliable way to measure RAG quality in Indic languages, with no API key and no cost.
 
@@ -94,6 +94,17 @@ results = evaluate(
     contexts=[["பிஎம் கிசான் திட்டத்தின் கீழ் விவசாயிகளுக்கு ஆண்டுக்கு 6000 ரூபாய் கிடைக்கிறது."]],
     answers=["பிஎம் கிசான் திட்டத்தில் 6000 ரூபாய் கிடைக்கிறது."],
     language="tamil"
+)
+```
+
+### Telugu
+
+```python
+results = evaluate(
+    questions=["పీఎం కిసాన్ పథకంలో రైతులకు ఎంత డబ్బు లభిస్తుంది?"],
+    contexts=[["ప్రధానమంత్రి కిసాన్ సమ్మాన్ నిధి పథకం కింద రైతులకు సంవత్సరానికి 6000 రూపాయలు లభిస్తుంది."]],
+    answers=["పీఎం కిసాన్ పథకంలో 6000 రూపాయలు లభిస్తాయి."],
+    language="telugu"
 )
 ```
 
