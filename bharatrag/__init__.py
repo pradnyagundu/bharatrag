@@ -12,7 +12,13 @@ from bharatrag.metrics.answer_relevance import AnswerRelevance
 
 logger = logging.getLogger(__name__)
 
-__all__ = ["evaluate"]
+__all__ = [
+    "evaluate",
+    "IndicEmbedder",
+    "ContextRelevance",
+    "Groundedness",
+    "AnswerRelevance",
+]
 
 try:
     from importlib.metadata import version as _metadata_version
