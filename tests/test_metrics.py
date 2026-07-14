@@ -143,6 +143,14 @@ class TestGroundedness:
         assert "1.5" in claims[0]
         assert "डॉ. राम" in claims[1]
 
+    def test_split_into_claims_latin_abbreviations(self, hindi_embedder):
+        gr = Groundedness(language="hindi", embedder=hindi_embedder)
+        text = "यह योजना किसानों, महिलाओं etc. के लिए है। यह अच्छी है।"
+        claims = gr._split_into_claims(text)
+        assert len(claims) == 2
+        assert "etc." in claims[0] or "etc" in claims[0]
+        assert "यह अच्छी है" in claims[1]
+
 
 # ── AnswerRelevance tests ───────────────────────────────────────
 class TestAnswerRelevance:
@@ -371,6 +379,15 @@ class TestIntegrations:
                 input="पीएम किसान योजना में कितने रुपये मिलते हैं?",
             )
             assert result["score"] == 1.0
+
+            # Test the new early return behavior when reference is missing
+            result_missing = evaluator._evaluate_strings(
+                prediction="पीएम किसान योजना में 6000 रुपये मिलते हैं।",
+                reference=None,
+                input="पीएम किसान योजना में कितने रुपये मिलते हैं?",
+            )
+            assert result_missing["score"] == 0.0
+
         finally:
             sys.modules.clear()
             sys.modules.update(original_modules)

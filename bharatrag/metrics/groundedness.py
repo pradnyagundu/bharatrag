@@ -26,7 +26,8 @@ class Groundedness:
         # Protect common abbreviations dots 
         abbreviations = [
             "डॉ", "पं", "प्रो", "श्री", "श्रीमती",
-            "Dr", "Mr", "Mrs", "Ms", "Prof", "e.g", "i.e", "vs"
+            "Dr", "Mr", "Mrs", "Ms", "Prof", "e.g", "i.e", "vs",
+            "etc", "viz", "approx"
         ]
         for abbr in abbreviations:
             safe_abbr = re.escape(abbr)
