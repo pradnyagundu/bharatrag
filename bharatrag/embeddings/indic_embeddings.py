@@ -1,6 +1,7 @@
 """
 Indic Embeddings — loads multilingual embedding models
-that actually understand Hindi and Marathi.
+that understand Indian languages: Hindi, Marathi, Tamil,
+Bengali, Telugu, Gujarati, and English.
 """
 
 import logging
@@ -58,7 +59,8 @@ class IndicEmbedder:
     def __init__(self, language: str = "hindi"):
         """
         Args:
-            language: "hindi", "marathi", or "english"
+            language: one of "hindi", "marathi", "tamil", "bengali",
+                      "telugu", "gujarati", or "english"
         """
         if language not in INDIC_MODELS:
             raise ValueError(
@@ -88,7 +90,7 @@ class IndicEmbedder:
         Convert a single text string into a vector (embedding).
 
         Args:
-            text: input string in Hindi/Marathi/English
+            text: input string in any supported Indic language or English
 
         Returns:
             numpy array of shape (embedding_dim,)

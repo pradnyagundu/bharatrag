@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "bharatrag"
-version = "0.1.9"
-description = "RAG evaluation library for Indian languages (Hindi, Marathi)"
+version = "0.1.10"
+description = "RAG evaluation library for Indian languages (Hindi, Marathi, Tamil, Bengali, Telugu, Gujarati)"
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.9"
@@ -19,6 +19,10 @@ classifiers = [
     "Intended Audience :: Science/Research",
     "Natural Language :: Hindi",
     "Natural Language :: Marathi",
+    "Natural Language :: Tamil",
+    "Natural Language :: Bengali",
+    "Natural Language :: Telugu",
+    "Natural Language :: Gujarati",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.9",

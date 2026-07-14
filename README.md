@@ -179,13 +179,13 @@ print(result.score)
 | Gujarati | `l3cube-pune/gujarati-sentence-bert-nli` |
 | English | `sentence-transformers/all-MiniLM-L6-v2` |
 
-More languages coming soon — Bengali, Gujarati, Punjabi.
+More languages coming soon — Punjabi, Hinglish (code-switching).
 
 ---
 
 ## Benchmark Dataset
 
-BharatRAG ships with a hand-curated benchmark dataset of **70 QA pairs** across Hindi, Marathi, and Tamil, spanning:
+BharatRAG ships with a hand-curated benchmark dataset of **120 QA pairs** across Hindi, Marathi, Tamil, Bengali, Telugu, and Gujarati, spanning:
 - Government schemes (PM Kisan, Ayushman Bharat, Jan Dhan, Ujjwala)
 - Agriculture (crop insurance, drip irrigation, organic farming)
 - Health (diabetes, TB, anaemia, sanitation)
@@ -205,7 +205,7 @@ Each example includes a correct answer and a hallucinated answer for evaluation 
 |---|---|---|
 | English RAG evaluation | ✅ | ✅ |
 | Hindi RAG evaluation | ❌ Unreliable | ✅ |
-| Marathi / Tamil evaluation | ❌ Not supported | ✅ |
+| Marathi / Tamil / Bengali / Telugu / Gujarati evaluation | ❌ Not supported | ✅ |
 | Indic benchmark dataset | ❌ | ✅ |
 | LangChain / LlamaIndex integration | ✅ | ✅ |
 | Free, no API key needed | ❌ (needs LLM judge) | ✅ Fully offline |
@@ -226,10 +226,13 @@ pytest tests/ -v
 - [x] Hindi support
 - [x] Marathi support
 - [x] Tamil support
-- [x] 70-example benchmark dataset
+- [x] Bengali support
+- [x] Telugu support
+- [x] Gujarati support
+- [x] 120-example benchmark dataset (Hindi, Marathi, Tamil, Bengali, Telugu, Gujarati)
 - [x] LangChain integration
 - [x] LlamaIndex integration
-- [ ] Bengali, Gujarati, Punjabi support
+- [ ] Punjabi support
 - [ ] Streamlit UI for interactive evaluation
 - [ ] Hinglish / code-switching support
 - [ ] Benchmarking vs RAGAS / DeepEval

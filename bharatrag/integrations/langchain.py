@@ -68,7 +68,7 @@ class BharatRAGLangChainEvaluator(StringEvaluator):
         """
 
         if not reference:
-            raise ValueError("Reference context is required for evaluation.")
+            return {"score": 0.0}
 
         # LangChain reference might be a single string. Convert to list format for BharatRAG.
         contexts = [reference] if isinstance(reference, str) else list(reference)

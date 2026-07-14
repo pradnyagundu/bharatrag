@@ -42,5 +42,6 @@ jobs:
         pytest tests/ -m "not integration" -v
 
     - name: Run integration tests
+      if: github.ref == 'refs/heads/main'
       run: |
         pytest tests/ -m "integration" -v

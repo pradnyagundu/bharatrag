@@ -26,7 +26,7 @@ def filter_by_language(examples: list, language: str) -> list:
 
     Args:
         examples: list of dataset examples
-        language: "hindi" or "marathi"
+        language: e.g. "hindi", "marathi", "tamil", "bengali", "telugu", "gujarati", "english"
 
     Returns:
         filtered list

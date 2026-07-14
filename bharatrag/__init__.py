@@ -12,7 +12,13 @@ from bharatrag.metrics.answer_relevance import AnswerRelevance
 
 logger = logging.getLogger(__name__)
 
-__all__ = ["evaluate"]
+__all__ = [
+    "evaluate",
+    "IndicEmbedder",
+    "ContextRelevance",
+    "Groundedness",
+    "AnswerRelevance",
+]
 
 try:
     from importlib.metadata import version as _metadata_version
@@ -36,10 +42,11 @@ def evaluate(
     Evaluate a RAG system on Indian language data.
 
     Args:
-        questions: list of questions (in Hindi/Marathi)
+        questions: list of questions in the target language
         contexts:  list of lists — retrieved context chunks per question
         answers:   list of generated answers
-        language:  "hindi", "marathi", or "english" (default: "hindi")
+        language:  one of "hindi", "marathi", "tamil", "bengali", "telugu",
+                   "gujarati", or "english" (default: "hindi")
 
     Returns:
         dict with scores for each metric
