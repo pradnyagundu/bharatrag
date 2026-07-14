@@ -36,7 +36,7 @@ def evaluate(
     Evaluate a RAG system on Indian language data.
 
     Args:
-        questions: list of questions (in Hindi/Marathi)
+        questions: list of questions in the target language
         contexts:  list of lists — retrieved context chunks per question
         answers:   list of generated answers
         language:  one of "hindi", "marathi", "tamil", "bengali", "telugu",

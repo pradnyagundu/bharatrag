@@ -90,7 +90,7 @@ class IndicEmbedder:
         Convert a single text string into a vector (embedding).
 
         Args:
-            text: input string in Hindi/Marathi/English
+            text: input string in any supported Indic language or English
 
         Returns:
             numpy array of shape (embedding_dim,)

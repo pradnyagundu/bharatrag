@@ -205,7 +205,7 @@ Each example includes a correct answer and a hallucinated answer for evaluation 
 |---|---|---|
 | English RAG evaluation | ✅ | ✅ |
 | Hindi RAG evaluation | ❌ Unreliable | ✅ |
-| Marathi / Tamil evaluation | ❌ Not supported | ✅ |
+| Marathi / Tamil / Bengali / Telugu / Gujarati evaluation | ❌ Not supported | ✅ |
 | Indic benchmark dataset | ❌ | ✅ |
 | LangChain / LlamaIndex integration | ✅ | ✅ |
 | Free, no API key needed | ❌ (needs LLM judge) | ✅ Fully offline |
