@@ -51,3 +51,8 @@ Repository = "https://github.com/pradnyagundu/bharatrag"
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["bharatrag*"]
+
+[tool.pytest.ini_options]
+markers = [
+    "integration: marks tests as requiring model downloads (deselect with '-m \"not integration\"')",
+]

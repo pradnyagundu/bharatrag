@@ -3,7 +3,6 @@ BharatRAG Test Suite
 Run with: pytest tests/ -v
 """
 
-from sympy.polys.polyconfig import query
 import pytest
 from bharatrag.embeddings.indic_embeddings import IndicEmbedder
 from bharatrag.metrics.context_relevance import ContextRelevance
@@ -19,6 +18,7 @@ def hindi_embedder():
 
 
 # ── IndicEmbedder tests ─────────────────────────────────────────
+@pytest.mark.integration
 class TestIndicEmbedder:
     def test_supported_language_hindi(self):
         embedder = IndicEmbedder(language="hindi")
@@ -58,6 +58,7 @@ class TestIndicEmbedder:
 
 
 # ── ContextRelevance tests ──────────────────────────────────────
+@pytest.mark.integration
 class TestContextRelevance:
     def test_relevant_context_scores_higher_than_irrelevant(self, hindi_embedder):
         cr = ContextRelevance(language="hindi", embedder=hindi_embedder)
@@ -88,6 +89,7 @@ class TestContextRelevance:
 
 
 # ── Groundedness tests ──────────────────────────────────────────
+@pytest.mark.integration
 class TestGroundedness:
     def test_grounded_answer_scores_high(self, hindi_embedder):
         gr = Groundedness(language="hindi", embedder=hindi_embedder)
@@ -146,6 +148,7 @@ class TestGroundedness:
 
 
 # ── AnswerRelevance tests ───────────────────────────────────────
+@pytest.mark.integration
 class TestAnswerRelevance:
     def test_relevant_answer_scores_higher_than_irrelevant(self, hindi_embedder):
         ar = AnswerRelevance(language="hindi", embedder=hindi_embedder)
@@ -170,6 +173,7 @@ class TestAnswerRelevance:
 
 
 # ── Full evaluate() tests ───────────────────────────────────────
+@pytest.mark.integration
 class TestEvaluate:
     def test_evaluate_returns_all_keys(self):
         results = evaluate(
@@ -231,6 +235,7 @@ class TestEvaluateValidation:
 
 
 # ── Integration tests ────────────────────────
+@pytest.mark.integration
 class TestIntegrations:
     # To test the langchain dependency and evaluator
     def test_langchain_evaluator(self, hindi_embedder):
@@ -273,7 +278,7 @@ class TestIntegrations:
 
             try:
                 with pytest.raises(ImportError, match="Could not import llama_index"):
-                    from bharatrag.integrations.llamaindex import BharatRAGLlamaIndexEvaluator
+                    pass
             finally:
                 # Restore the original state of sys.modules
                 sys.modules.clear()
