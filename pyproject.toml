@@ -23,7 +23,7 @@ classifiers = [
     "Natural Language :: Bengali",
     "Natural Language :: Telugu",
     "Natural Language :: Gujarati",
-    "Natural Language :: Punjabi",
+    "Natural Language :: Panjabi",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.9",
