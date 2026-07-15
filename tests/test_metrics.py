@@ -151,6 +151,15 @@ class TestGroundedness:
         assert "etc." in claims[0] or "etc" in claims[0]
         assert "यह अच्छी है" in claims[1]
 
+    def test_split_into_claims_gujarati_abbreviations(self, hindi_embedder):
+        gr = Groundedness(language="gujarati", embedder=hindi_embedder)
+        # "Dr. Patel says it is good. He is right."
+        text = "ડૉ. પટેલ કહે છે કે આ સારું છે. તે સાચું છે."
+        claims = gr._split_into_claims(text)
+        assert len(claims) == 2
+        assert "ડૉ. પટેલ" in claims[0]
+        assert "તે સાચું છે" in claims[1]
+
 
 # ── AnswerRelevance tests ───────────────────────────────────────
 class TestAnswerRelevance:

@@ -25,7 +25,8 @@ class Groundedness:
         text = re.sub(r'(\d)\.(\d)', r'\1<DECIMAL_POINT>\2', text)
         # Protect common abbreviations dots 
         abbreviations = [
-            "डॉ", "पं", "प्रो", "श्री", "श्रीमती",
+            "डॉ", "पं", "प्रो", "श्री", "श्रीमती",  # Hindi/Marathi
+            "ડૉ", "શ્રી", "શ્રીમતી", "પ્રો",       # Gujarati
             "Dr", "Mr", "Mrs", "Ms", "Prof", "e.g", "i.e", "vs",
             "etc", "viz", "approx"
         ]
