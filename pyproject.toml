@@ -21,8 +21,6 @@ classifiers = [
     "Natural Language :: Marathi",
     "Natural Language :: Tamil",
     "Natural Language :: Bengali",
-    "Natural Language :: Telugu",
-    "Natural Language :: Gujarati",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.9",
