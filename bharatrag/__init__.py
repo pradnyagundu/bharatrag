@@ -28,7 +28,7 @@ except Exception:
 
 __author__ = "Pradnya Gundu"
 
-_SUPPORTED_LANGUAGES = ("hindi", "marathi", "tamil", "bengali", "telugu", "gujarati", "english")
+_SUPPORTED_LANGUAGES = ("hindi", "marathi", "tamil", "bengali", "telugu", "gujarati", "punjabi", "english")
 
 
 def evaluate(
@@ -46,7 +46,7 @@ def evaluate(
         contexts:  list of lists — retrieved context chunks per question
         answers:   list of generated answers
         language:  one of "hindi", "marathi", "tamil", "bengali", "telugu",
-                   "gujarati", or "english" (default: "hindi")
+                   "gujarati", "punjabi", or "english" (default: "hindi")
 
     Returns:
         dict with scores for each metric

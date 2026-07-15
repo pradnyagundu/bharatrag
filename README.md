@@ -7,7 +7,7 @@
 [![PyPI](https://img.shields.io/pypi/v/bharatrag.svg)](https://pypi.org/project/bharatrag/)
 [![Tests](https://github.com/pradnyagundu/bharatrag/actions/workflows/tests.yml/badge.svg)](https://github.com/pradnyagundu/bharatrag/actions)
 
-BharatRAG is the first open-source RAG evaluation library built specifically for **Indian languages (Hindi, Marathi, Tamil, Bengali, Telugu, Gujarati)**.
+BharatRAG is the first open-source RAG evaluation library built specifically for **Indian languages (Hindi, Marathi, Tamil, Bengali, Telugu, Gujarati, Punjabi)**.
 
 Existing tools like RAGAS are built and tested on English data. BharatRAG fills the gap — giving developers a reliable way to measure RAG quality in Indic languages, with no API key and no cost.
 
@@ -246,15 +246,16 @@ print(result.score)
 | Bengali | `l3cube-pune/bengali-sentence-bert-nli` |
 | Telugu | `l3cube-pune/telugu-sentence-bert-nli` |
 | Gujarati | `l3cube-pune/gujarati-sentence-bert-nli` |
+| Punjabi | `l3cube-pune/punjabi-sentence-bert-nli` |
 | English | `sentence-transformers/all-MiniLM-L6-v2` |
 
-More languages coming soon — Punjabi, Hinglish (code-switching).
+More languages coming soon — Hinglish (code-switching).
 
 ---
 
 ## Benchmark Dataset
 
-BharatRAG ships with a hand-curated benchmark dataset of **120 QA pairs** across Hindi, Marathi, Tamil, Bengali, Telugu, and Gujarati, spanning:
+BharatRAG ships with a hand-curated benchmark dataset of **150 QA pairs** across Hindi, Marathi, Tamil, Bengali, Telugu, Gujarati, and Punjabi, spanning:
 - Government schemes (PM Kisan, Ayushman Bharat, Jan Dhan, Ujjwala)
 - Agriculture (crop insurance, drip irrigation, organic farming)
 - Health (diabetes, TB, anaemia, sanitation)
@@ -274,7 +275,7 @@ Each example includes a correct answer and a hallucinated answer for evaluation 
 |---|---|---|
 | English RAG evaluation | ✅ | ✅ |
 | Hindi RAG evaluation | ❌ Unreliable | ✅ |
-| Marathi / Tamil / Bengali / Telugu / Gujarati evaluation | ❌ Not supported | ✅ |
+| Marathi / Tamil / Bengali / Telugu / Gujarati / Punjabi evaluation | ❌ Not supported | ✅ |
 | Indic benchmark dataset | ❌ | ✅ |
 | LangChain / LlamaIndex integration | ✅ | ✅ |
 | Free, no API key needed | ❌ (needs LLM judge) | ✅ Fully offline |
@@ -298,10 +299,10 @@ pytest tests/ -v
 - [x] Bengali support
 - [x] Telugu support
 - [x] Gujarati support
-- [x] 120-example benchmark dataset (Hindi, Marathi, Tamil, Bengali, Telugu, Gujarati)
+- [x] Punjabi support
+- [x] 150-example benchmark dataset (Hindi, Marathi, Tamil, Bengali, Telugu, Gujarati, Punjabi)
 - [x] LangChain integration
 - [x] LlamaIndex integration
-- [ ] Punjabi support
 - [x] Streamlit UI for interactive evaluation
 - [ ] Hinglish / code-switching support
 - [ ] Benchmarking vs RAGAS / DeepEval

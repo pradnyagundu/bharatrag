@@ -23,6 +23,10 @@ class TestIndicEmbedder:
         embedder = IndicEmbedder(language="hindi")
         assert embedder is not None
 
+    def test_supported_language_punjabi(self):
+        embedder = IndicEmbedder(language="punjabi")
+        assert embedder is not None
+
     def test_unsupported_language_raises_error(self):
         with pytest.raises(ValueError):
             IndicEmbedder(language="klingon")
