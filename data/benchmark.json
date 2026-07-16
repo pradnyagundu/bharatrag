@@ -853,6 +853,227 @@
       "hallucinated_answer": "MGNREGA திட்டத்தில் 10 நாட்கள் வேலை மட்டுமே கிடைக்கிறது."
     },
     {
+      "id": "ta_011",
+      "language": "tamil",
+      "domain": "government_scheme",
+      "question": "பிஎம் கிசான் திட்டத்தில் எவ்வளவு பணம் கிடைக்கும்?",
+      "context": [
+        "பிஎம் கிசான் திட்டத்தின் கீழ் விவசாயிகளுக்கு ஆண்டுக்கு 6000 ரூபாய் கிடைக்கும்.",
+        "இது 3 தவணைகளில் வழங்கப்படுகிறது."
+      ],
+      "ground_truth_answer": "ஆண்டுக்கு 6000 ரூபாய்.",
+      "hallucinated_answer": "12000 ரூபாய்."
+    },
+    {
+      "id": "ta_012",
+      "language": "tamil",
+      "domain": "government_scheme",
+      "question": "ஆயுஷ்மான் பாரத் திட்டத்தில் எவ்வளவு காப்பீடு கிடைக்கும்?",
+      "context": [
+        "ஆயுஷ்மான் பாரத் திட்டத்தில் ஆண்டுக்கு 5 லட்சம் ரூபாய் மருத்துவக் காப்பீடு கிடைக்கும்."
+      ],
+      "ground_truth_answer": "ஆண்டுக்கு 5 லட்சம் ரூபாய்.",
+      "hallucinated_answer": "10 லட்சம் ரூபாய்."
+    },
+    {
+      "id": "ta_013",
+      "language": "tamil",
+      "domain": "banking",
+      "question": "ஜன் தன் கணக்கு தொடங்க குறைந்தபட்ச இருப்பு எவ்வளவு?",
+      "context": [
+        "ஜன் தன் கணக்கை பூஜ்ஜிய இருப்புடன் தொடங்கலாம்."
+      ],
+      "ground_truth_answer": "பூஜ்ஜிய இருப்பு.",
+      "hallucinated_answer": "1000 ரூபாய்."
+    },
+    {
+      "id": "ta_014",
+      "language": "tamil",
+      "domain": "government_scheme",
+      "question": "உஜ்வாலா திட்டத்தின் பயன் என்ன?",
+      "context": [
+        "ஏழை பெண்களுக்கு இலவச எரிவாயு இணைப்பு வழங்கப்படுகிறது."
+      ],
+      "ground_truth_answer": "இலவச எரிவாயு இணைப்பு.",
+      "hallucinated_answer": "இலவச மின்சாரம்."
+    },
+    {
+      "id": "ta_015",
+      "language": "tamil",
+      "domain": "agriculture",
+      "question": "இயற்கை விவசாயம் என்றால் என்ன?",
+      "context": [
+        "இயற்கை விவசாயத்தில் ரசாயன உரங்கள் தவிர்க்கப்படுகின்றன."
+      ],
+      "ground_truth_answer": "ரசாயன உரங்கள் இல்லாத விவசாயம்.",
+      "hallucinated_answer": "ரசாயன உரங்களுடன் விவசாயம்."
+    },
+    {
+      "id": "ta_016",
+      "language": "tamil",
+      "domain": "health",
+      "question": "காசநோய் சிகிச்சை எவ்வளவு காலம் தொடரும்?",
+      "context": [
+        "காசநோய் சிகிச்சை பொதுவாக 6 மாதங்கள் தொடரும்."
+      ],
+      "ground_truth_answer": "6 மாதங்கள்.",
+      "hallucinated_answer": "2 நாட்கள்."
+    },
+    {
+      "id": "ta_017",
+      "language": "tamil",
+      "domain": "education",
+      "question": "மதிய உணவுத் திட்டம் என்றால் என்ன?",
+      "context": [
+        "இது பள்ளி குழந்தைகளுக்கு சத்தான உணவை வழங்குகிறது."
+      ],
+      "ground_truth_answer": "பள்ளி குழந்தைகளுக்கு உணவு.",
+      "hallucinated_answer": "குழந்தைகளுக்கு லேப்டாப்."
+    },
+    {
+      "id": "ta_018",
+      "language": "tamil",
+      "domain": "banking",
+      "question": "யுபிஐ (UPI) என்றால் என்ன?",
+      "context": [
+        "யுபிஐ என்பது பணம் அனுப்புவதற்கான டிஜிட்டல் கட்டண முறை."
+      ],
+      "ground_truth_answer": "டிஜிட்டல் கட்டண முறை.",
+      "hallucinated_answer": "ஒரு புதிய வங்கி."
+    },
+    {
+      "id": "ta_019",
+      "language": "tamil",
+      "domain": "banking",
+      "question": "கேஒய்சி (KYC) என்றால் என்ன?",
+      "context": [
+        "உங்கள் வாடிக்கையாளரை அறிந்து கொள்ளுங்கள் (KYC) என்பதற்கு ஆதார் அல்லது பான் தேவை."
+      ],
+      "ground_truth_answer": "உங்கள் வாடிக்கையாளரை அறிந்து கொள்ளுங்கள்.",
+      "hallucinated_answer": "அரசு வரி."
+    },
+    {
+      "id": "ta_020",
+      "language": "tamil",
+      "domain": "agriculture",
+      "question": "சொட்டு நீர் பாசனத்தின் பயன் என்ன?",
+      "context": [
+        "நீரை சேமித்து பயிர் விளைச்சலை அதிகரிக்கிறது."
+      ],
+      "ground_truth_answer": "நீரை சேமிக்கிறது.",
+      "hallucinated_answer": "நீரை வீணாக்குகிறது."
+    },
+    {
+      "id": "ta_021",
+      "language": "tamil",
+      "domain": "government_scheme",
+      "question": "மகாத்மா காந்தி தேசிய ஊரக வேலை உறுதித் திட்டத்தில் (MGNREGA) எத்தனை நாட்கள் வேலை கிடைக்கும்?",
+      "context": [
+        "100 நாட்கள் வேலை உத்தரவாதம்."
+      ],
+      "ground_truth_answer": "100 நாட்கள்.",
+      "hallucinated_answer": "365 நாட்கள்."
+    },
+    {
+      "id": "ta_022",
+      "language": "tamil",
+      "domain": "health",
+      "question": "சர்க்கரை நோயை எவ்வாறு தடுப்பது?",
+      "context": [
+        "சர்க்கரை உட்கொள்வதை குறைத்து உடற்பயிற்சி செய்ய வேண்டும்."
+      ],
+      "ground_truth_answer": "குறைவான சர்க்கரை மற்றும் உடற்பயிற்சி.",
+      "hallucinated_answer": "தினமும் இனிப்பு சாப்பிட வேண்டும்."
+    },
+    {
+      "id": "ta_023",
+      "language": "tamil",
+      "domain": "government_scheme",
+      "question": "சுகன்யா சம்ருத்தி திட்டம் எதற்காக?",
+      "context": [
+        "பெண் குழந்தைகளின் கல்வி மற்றும் திருமணத்திற்காக பணம் சேமிக்க."
+      ],
+      "ground_truth_answer": "பெண் குழந்தைகளின் எதிர்காலத்திற்காக.",
+      "hallucinated_answer": "முதியோர் ஓய்வூதியத்திற்காக."
+    },
+    {
+      "id": "ta_024",
+      "language": "tamil",
+      "domain": "education",
+      "question": "தேசிய கல்வி கொள்கை (NEP) 2020 இன் கட்டமைப்பு என்ன?",
+      "context": [
+        "கட்டமைப்பு 5+3+3+4 ஆகும்."
+      ],
+      "ground_truth_answer": "5+3+3+4.",
+      "hallucinated_answer": "10+2."
+    },
+    {
+      "id": "ta_025",
+      "language": "tamil",
+      "domain": "banking",
+      "question": "கிசான் கிரெடிட் கார்டு என்றால் என்ன?",
+      "context": [
+        "விவசாயிகளுக்கு குறைந்த வட்டியில் கடன் வழங்குகிறது."
+      ],
+      "ground_truth_answer": "குறைந்த வட்டியில் கடன்.",
+      "hallucinated_answer": "இலவச விமான பயணம்."
+    },
+    {
+      "id": "ta_026",
+      "language": "tamil",
+      "domain": "health",
+      "question": "இரத்த சோகை என்றால் என்ன?",
+      "context": [
+        "உடலில் இரத்த பற்றாக்குறை."
+      ],
+      "ground_truth_answer": "இரத்த பற்றாக்குறை.",
+      "hallucinated_answer": "எலும்பு நோய்."
+    },
+    {
+      "id": "ta_027",
+      "language": "tamil",
+      "domain": "government_scheme",
+      "question": "தூய்மை இந்தியா திட்டம் என்றால் என்ன?",
+      "context": [
+        "நாட்டை தூய்மையாக வைத்திருக்கவும், திறந்தவெளியில் மலம் கழிப்பதை ஒழிக்கவும்."
+      ],
+      "ground_truth_answer": "நாட்டை தூய்மையாக வைத்திருக்க.",
+      "hallucinated_answer": "புதிய நகரங்களை உருவாக்க."
+    },
+    {
+      "id": "ta_028",
+      "language": "tamil",
+      "domain": "banking",
+      "question": "நெட் பேங்கிங் என்றால் என்ன?",
+      "context": [
+        "இணையம் மூலம் வீட்டிலிருந்தபடியே வங்கி பணிகளை செய்வது."
+      ],
+      "ground_truth_answer": "இணைய வங்கி.",
+      "hallucinated_answer": "ஒரு விளையாட்டு."
+    },
+    {
+      "id": "ta_029",
+      "language": "tamil",
+      "domain": "agriculture",
+      "question": "உரம் எப்போது போட வேண்டும்?",
+      "context": [
+        "மண் பரிசோதனைக்கு பிறகு தேவைக்கேற்ப."
+      ],
+      "ground_truth_answer": "மண் பரிசோதனைக்கு பிறகு.",
+      "hallucinated_answer": "தினமும்."
+    },
+    {
+      "id": "ta_030",
+      "language": "tamil",
+      "domain": "government_scheme",
+      "question": "பிரதம மந்திரி ஆவாஸ் யோஜனா என்றால் என்ன?",
+      "context": [
+        "ஏழைகள் வீடு கட்ட நிதி உதவி."
+      ],
+      "ground_truth_answer": "வீடு கட்ட உதவி.",
+      "hallucinated_answer": "இலவச கார்கள்."
+    },
+    {
       "id": "bn_001",
       "language": "bengali",
       "domain": "government_scheme",
@@ -971,6 +1192,227 @@
       ],
       "ground_truth_answer": "উজ্জ্বলা যোজনা দারিদ্র্যসীমার নীচের মহিলাদের বিনামূল্যে এলপিজি সংযোগ দেয় যাতে তারা ধোঁয়ামুক্ত রান্নাঘর পান।",
       "hallucinated_answer": "উজ্জ্বলা যোজনা শুধুমাত্র শহুরে মহিলাদের জন্য।"
+    },
+    {
+      "id": "bn_011",
+      "language": "bengali",
+      "domain": "government_scheme",
+      "question": "পিএম কিষাণ যোজনায় কত টাকা পাওয়া যায়?",
+      "context": [
+        "পিএম কিষাণ যোজনার অধীনে কৃষকরা প্রতি বছর ৬০০০ টাকা পান।",
+        "এটি ৩টি কিস্তিতে দেওয়া হয়।"
+      ],
+      "ground_truth_answer": "প্রতি বছর ৬০০০ টাকা।",
+      "hallucinated_answer": "১২০০০ টাকা।"
+    },
+    {
+      "id": "bn_012",
+      "language": "bengali",
+      "domain": "government_scheme",
+      "question": "আয়ুষ্মান ভারত যোজনায় কত টাকার বীমা পাওয়া যায়?",
+      "context": [
+        "আয়ুষ্মান ভারত যোজনায় প্রতি বছর ৫ লক্ষ টাকার স্বাস্থ্য বীমা পাওয়া যায়।"
+      ],
+      "ground_truth_answer": "প্রতি বছর ৫ লক্ষ টাকা।",
+      "hallucinated_answer": "১০ লক্ষ টাকা।"
+    },
+    {
+      "id": "bn_013",
+      "language": "bengali",
+      "domain": "banking",
+      "question": "জন ধন অ্যাকাউন্টের জন্য ন্যূনতম ব্যালেন্স কত?",
+      "context": [
+        "জন ধন অ্যাকাউন্ট শূন্য ব্যালেন্স দিয়ে খোলা যায়।"
+      ],
+      "ground_truth_answer": "শূন্য ব্যালেন্স।",
+      "hallucinated_answer": "১০০০ টাকা।"
+    },
+    {
+      "id": "bn_014",
+      "language": "bengali",
+      "domain": "government_scheme",
+      "question": "উজ্জ্বলা যোজনার সুবিধা কী?",
+      "context": [
+        "দরিদ্র মহিলাদের বিনামূল্যে গ্যাস সংযোগ দেওয়া হয়।"
+      ],
+      "ground_truth_answer": "বিনামূল্যে গ্যাস সংযোগ।",
+      "hallucinated_answer": "বিনামূল্যে বিদ্যুৎ।"
+    },
+    {
+      "id": "bn_015",
+      "language": "bengali",
+      "domain": "agriculture",
+      "question": "জৈব কৃষি কী?",
+      "context": [
+        "জৈব কৃষিতে রাসায়নিক সারের ব্যবহার এড়ানো হয়।"
+      ],
+      "ground_truth_answer": "রাসায়নিক সার ছাড়া কৃষি।",
+      "hallucinated_answer": "রাসায়নিক সার দিয়ে কৃষি।"
+    },
+    {
+      "id": "bn_016",
+      "language": "bengali",
+      "domain": "health",
+      "question": "যক্ষ্মার চিকিৎসা কত দিন চলে?",
+      "context": [
+        "যক্ষ্মার চিকিৎসা সাধারণত ৬ মাস চলে।"
+      ],
+      "ground_truth_answer": "৬ মাস।",
+      "hallucinated_answer": "২ দিন।"
+    },
+    {
+      "id": "bn_017",
+      "language": "bengali",
+      "domain": "education",
+      "question": "মিড ডে মিল কী?",
+      "context": [
+        "এটি স্কুলের বাচ্চাদের পুষ্টিকর খাবার সরবরাহ করে।"
+      ],
+      "ground_truth_answer": "স্কুলের বাচ্চাদের খাবার।",
+      "hallucinated_answer": "বাচ্চাদের জন্য ল্যাপটপ।"
+    },
+    {
+      "id": "bn_018",
+      "language": "bengali",
+      "domain": "banking",
+      "question": "ইউপিআই (UPI) কী?",
+      "context": [
+        "ইউপিআই হল টাকা পাঠানোর একটি ডিজিটাল পেমেন্ট সিস্টেম।"
+      ],
+      "ground_truth_answer": "ডিজিটাল পেমেন্ট সিস্টেম।",
+      "hallucinated_answer": "একটি নতুন ব্যাঙ্ক।"
+    },
+    {
+      "id": "bn_019",
+      "language": "bengali",
+      "domain": "banking",
+      "question": "কেওয়াইসি (KYC) মানে কী?",
+      "context": [
+        "আপনার গ্রাহককে জানুন (KYC)-এর জন্য আধার বা প্যান কার্ড প্রয়োজন।"
+      ],
+      "ground_truth_answer": "আপনার গ্রাহককে জানুন।",
+      "hallucinated_answer": "সরকারি ট্যাক্স।"
+    },
+    {
+      "id": "bn_020",
+      "language": "bengali",
+      "domain": "agriculture",
+      "question": "ড্রিপ সেচের সুবিধা কী?",
+      "context": [
+        "জল সাশ্রয় করে এবং ফসলের ফলন বাড়ায়।"
+      ],
+      "ground_truth_answer": "জল সাশ্রয় করে।",
+      "hallucinated_answer": "জল নষ্ট করে।"
+    },
+    {
+      "id": "bn_021",
+      "language": "bengali",
+      "domain": "government_scheme",
+      "question": "মনরেগাতে কত দিনের কাজ পাওয়া যায়?",
+      "context": [
+        "১০০ দিনের কর্মসংস্থানের গ্যারান্টি।"
+      ],
+      "ground_truth_answer": "১০০ দিন।",
+      "hallucinated_answer": "৩৬৫ দিন।"
+    },
+    {
+      "id": "bn_022",
+      "language": "bengali",
+      "domain": "health",
+      "question": "ডায়াবেটিস প্রতিরোধ কীভাবে করবেন?",
+      "context": [
+        "চিনি খাওয়া কমান এবং ব্যায়াম করুন।"
+      ],
+      "ground_truth_answer": "কম চিনি খাওয়া এবং ব্যায়াম করা।",
+      "hallucinated_answer": "প্রতিদিন মিষ্টি খাওয়া।"
+    },
+    {
+      "id": "bn_023",
+      "language": "bengali",
+      "domain": "government_scheme",
+      "question": "সুকন্যা সমৃদ্ধি যোজনা কীসের জন্য?",
+      "context": [
+        "মেয়েদের শিক্ষা ও বিয়ের জন্য টাকা জমানো।"
+      ],
+      "ground_truth_answer": "মেয়েদের ভবিষ্যতের জন্য।",
+      "hallucinated_answer": "বার্ধক্য ভাতার জন্য।"
+    },
+    {
+      "id": "bn_024",
+      "language": "bengali",
+      "domain": "education",
+      "question": "এনইপি (NEP) ২০২০-এর কাঠামো কী?",
+      "context": [
+        "কাঠামোটি হল ৫+৩+৩+৪।"
+      ],
+      "ground_truth_answer": "৫+৩+৩+৪।",
+      "hallucinated_answer": "১০+২।"
+    },
+    {
+      "id": "bn_025",
+      "language": "bengali",
+      "domain": "banking",
+      "question": "কিষাণ ক্রেডিট কার্ড কী?",
+      "context": [
+        "কৃষকদের কম সুদে ঋণ প্রদান করে।"
+      ],
+      "ground_truth_answer": "কম সুদে ঋণ।",
+      "hallucinated_answer": "বিনামূল্যে বিমান ভ্রমণ।"
+    },
+    {
+      "id": "bn_026",
+      "language": "bengali",
+      "domain": "health",
+      "question": "রক্তাল্পতা কী?",
+      "context": [
+        "শরীরে রক্তের অভাব।"
+      ],
+      "ground_truth_answer": "রক্তের অভাব।",
+      "hallucinated_answer": "হাড়ের রোগ।"
+    },
+    {
+      "id": "bn_027",
+      "language": "bengali",
+      "domain": "government_scheme",
+      "question": "স্বচ্ছ ভারত অভিযান কী?",
+      "context": [
+        "দেশকে পরিষ্কার রাখা এবং খোলা জায়গায় শৌচকর্ম মুক্ত করা।"
+      ],
+      "ground_truth_answer": "দেশকে পরিষ্কার রাখা।",
+      "hallucinated_answer": "নতুন শহর তৈরি করা।"
+    },
+    {
+      "id": "bn_028",
+      "language": "bengali",
+      "domain": "banking",
+      "question": "নেট ব্যাঙ্কিং কী?",
+      "context": [
+        "ইন্টারনেটের মাধ্যমে বাড়ি থেকে ব্যাঙ্কের কাজ করা।"
+      ],
+      "ground_truth_answer": "ইন্টারনেট ব্যাঙ্কিং।",
+      "hallucinated_answer": "একটি খেলা।"
+    },
+    {
+      "id": "bn_029",
+      "language": "bengali",
+      "domain": "agriculture",
+      "question": "সার কখন প্রয়োগ করতে হবে?",
+      "context": [
+        "মাটি পরীক্ষার পর প্রয়োজন অনুযায়ী।"
+      ],
+      "ground_truth_answer": "মাটি পরীক্ষার পর।",
+      "hallucinated_answer": "প্রতিদিন।"
+    },
+    {
+      "id": "bn_030",
+      "language": "bengali",
+      "domain": "government_scheme",
+      "question": "পিএম আবাস যোজনা কী?",
+      "context": [
+        "গরিব মানুষের বাড়ি তৈরির জন্য আর্থিক সাহায্য।"
+      ],
+      "ground_truth_answer": "বাড়ি তৈরির জন্য সাহায্য।",
+      "hallucinated_answer": "বিনামূল্যে গাড়ি।"
     },
     {
       "id": "te_001",
@@ -1465,30 +1907,6 @@
       "hallucinated_answer": "12000 રૂપિયા."
     },
     {
-      "id": "bn_011",
-      "language": "bengali",
-      "domain": "government_scheme",
-      "question": "পিএম কিষাণ যোজনায় কত টাকা পাওয়া যায়?",
-      "context": [
-        "পিএম কিষাণ যোজনার অধীনে কৃষকরা প্রতি বছর ৬০০০ টাকা পান।",
-        "এটি ৩টি কিস্তিতে দেওয়া হয়।"
-      ],
-      "ground_truth_answer": "প্রতি বছর ৬০০০ টাকা।",
-      "hallucinated_answer": "১২০০০ টাকা।"
-    },
-    {
-      "id": "ta_011",
-      "language": "tamil",
-      "domain": "government_scheme",
-      "question": "பிஎம் கிசான் திட்டத்தில் எவ்வளவு பணம் கிடைக்கும்?",
-      "context": [
-        "பிஎம் கிசான் திட்டத்தின் கீழ் விவசாயிகளுக்கு ஆண்டுக்கு 6000 ரூபாய் கிடைக்கும்.",
-        "இது 3 தவணைகளில் வழங்கப்படுகிறது."
-      ],
-      "ground_truth_answer": "ஆண்டுக்கு 6000 ரூபாய்.",
-      "hallucinated_answer": "12000 ரூபாய்."
-    },
-    {
       "id": "gu_012",
       "language": "gujarati",
       "domain": "government_scheme",
@@ -1498,28 +1916,6 @@
       ],
       "ground_truth_answer": "દર વર્ષે 5 લાખ રૂપિયા.",
       "hallucinated_answer": "10 લાખ રૂપિયા."
-    },
-    {
-      "id": "bn_012",
-      "language": "bengali",
-      "domain": "government_scheme",
-      "question": "আয়ুষ্মান ভারত যোজনায় কত টাকার বীমা পাওয়া যায়?",
-      "context": [
-        "আয়ুষ্মান ভারত যোজনায় প্রতি বছর ৫ লক্ষ টাকার স্বাস্থ্য বীমা পাওয়া যায়।"
-      ],
-      "ground_truth_answer": "প্রতি বছর ৫ লক্ষ টাকা।",
-      "hallucinated_answer": "১০ লক্ষ টাকা।"
-    },
-    {
-      "id": "ta_012",
-      "language": "tamil",
-      "domain": "government_scheme",
-      "question": "ஆயுஷ்மான் பாரத் திட்டத்தில் எவ்வளவு காப்பீடு கிடைக்கும்?",
-      "context": [
-        "ஆயுஷ்மான் பாரத் திட்டத்தில் ஆண்டுக்கு 5 லட்சம் ரூபாய் மருத்துவக் காப்பீடு கிடைக்கும்."
-      ],
-      "ground_truth_answer": "ஆண்டுக்கு 5 லட்சம் ரூபாய்.",
-      "hallucinated_answer": "10 லட்சம் ரூபாய்."
     },
     {
       "id": "gu_013",
@@ -1533,28 +1929,6 @@
       "hallucinated_answer": "1000 રૂપિયા."
     },
     {
-      "id": "bn_013",
-      "language": "bengali",
-      "domain": "banking",
-      "question": "জন ধন অ্যাকাউন্টের জন্য ন্যূনতম ব্যালেন্স কত?",
-      "context": [
-        "জন ধন অ্যাকাউন্ট শূন্য ব্যালেন্স দিয়ে খোলা যায়।"
-      ],
-      "ground_truth_answer": "শূন্য ব্যালেন্স।",
-      "hallucinated_answer": "১০০০ টাকা।"
-    },
-    {
-      "id": "ta_013",
-      "language": "tamil",
-      "domain": "banking",
-      "question": "ஜன் தன் கணக்கு தொடங்க குறைந்தபட்ச இருப்பு எவ்வளவு?",
-      "context": [
-        "ஜன் தன் கணக்கை பூஜ்ஜிய இருப்புடன் தொடங்கலாம்."
-      ],
-      "ground_truth_answer": "பூஜ்ஜிய இருப்பு.",
-      "hallucinated_answer": "1000 ரூபாய்."
-    },
-    {
       "id": "gu_014",
       "language": "gujarati",
       "domain": "government_scheme",
@@ -1564,28 +1938,6 @@
       ],
       "ground_truth_answer": "મફત ગેસ કનેક્શન.",
       "hallucinated_answer": "મફત વીજળી."
-    },
-    {
-      "id": "bn_014",
-      "language": "bengali",
-      "domain": "government_scheme",
-      "question": "উজ্জ্বলা যোজনার সুবিধা কী?",
-      "context": [
-        "দরিদ্র মহিলাদের বিনামূল্যে গ্যাস সংযোগ দেওয়া হয়।"
-      ],
-      "ground_truth_answer": "বিনামূল্যে গ্যাস সংযোগ।",
-      "hallucinated_answer": "বিনামূল্যে বিদ্যুৎ।"
-    },
-    {
-      "id": "ta_014",
-      "language": "tamil",
-      "domain": "government_scheme",
-      "question": "உஜ்வாலா திட்டத்தின் பயன் என்ன?",
-      "context": [
-        "ஏழை பெண்களுக்கு இலவச எரிவாயு இணைப்பு வழங்கப்படுகிறது."
-      ],
-      "ground_truth_answer": "இலவச எரிவாயு இணைப்பு.",
-      "hallucinated_answer": "இலவச மின்சாரம்."
     },
     {
       "id": "gu_015",
@@ -1599,28 +1951,6 @@
       "hallucinated_answer": "રાસાયણિક ખાતરો સાથે ખેતી."
     },
     {
-      "id": "bn_015",
-      "language": "bengali",
-      "domain": "agriculture",
-      "question": "জৈব কৃষি কী?",
-      "context": [
-        "জৈব কৃষিতে রাসায়নিক সারের ব্যবহার এড়ানো হয়।"
-      ],
-      "ground_truth_answer": "রাসায়নিক সার ছাড়া কৃষি।",
-      "hallucinated_answer": "রাসায়নিক সার দিয়ে কৃষি।"
-    },
-    {
-      "id": "ta_015",
-      "language": "tamil",
-      "domain": "agriculture",
-      "question": "இயற்கை விவசாயம் என்றால் என்ன?",
-      "context": [
-        "இயற்கை விவசாயத்தில் ரசாயன உரங்கள் தவிர்க்கப்படுகின்றன."
-      ],
-      "ground_truth_answer": "ரசாயன உரங்கள் இல்லாத விவசாயம்.",
-      "hallucinated_answer": "ரசாயன உரங்களுடன் விவசாயம்."
-    },
-    {
       "id": "gu_016",
       "language": "gujarati",
       "domain": "health",
@@ -1630,28 +1960,6 @@
       ],
       "ground_truth_answer": "6 મહિના.",
       "hallucinated_answer": "2 દિવસ."
-    },
-    {
-      "id": "bn_016",
-      "language": "bengali",
-      "domain": "health",
-      "question": "যক্ষ্মার চিকিৎসা কত দিন চলে?",
-      "context": [
-        "যক্ষ্মার চিকিৎসা সাধারণত ৬ মাস চলে।"
-      ],
-      "ground_truth_answer": "৬ মাস।",
-      "hallucinated_answer": "২ দিন।"
-    },
-    {
-      "id": "ta_016",
-      "language": "tamil",
-      "domain": "health",
-      "question": "காசநோய் சிகிச்சை எவ்வளவு காலம் தொடரும்?",
-      "context": [
-        "காசநோய் சிகிச்சை பொதுவாக 6 மாதங்கள் தொடரும்."
-      ],
-      "ground_truth_answer": "6 மாதங்கள்.",
-      "hallucinated_answer": "2 நாட்கள்."
     },
     {
       "id": "gu_017",
@@ -1665,28 +1973,6 @@
       "hallucinated_answer": "બાળકો માટે લેપટોપ."
     },
     {
-      "id": "bn_017",
-      "language": "bengali",
-      "domain": "education",
-      "question": "মিড ডে মিল কী?",
-      "context": [
-        "এটি স্কুলের বাচ্চাদের পুষ্টিকর খাবার সরবরাহ করে।"
-      ],
-      "ground_truth_answer": "স্কুলের বাচ্চাদের খাবার।",
-      "hallucinated_answer": "বাচ্চাদের জন্য ল্যাপটপ।"
-    },
-    {
-      "id": "ta_017",
-      "language": "tamil",
-      "domain": "education",
-      "question": "மதிய உணவுத் திட்டம் என்றால் என்ன?",
-      "context": [
-        "இது பள்ளி குழந்தைகளுக்கு சத்தான உணவை வழங்குகிறது."
-      ],
-      "ground_truth_answer": "பள்ளி குழந்தைகளுக்கு உணவு.",
-      "hallucinated_answer": "குழந்தைகளுக்கு லேப்டாப்."
-    },
-    {
       "id": "gu_018",
       "language": "gujarati",
       "domain": "banking",
@@ -1696,28 +1982,6 @@
       ],
       "ground_truth_answer": "ડિજિટલ પેમેન્ટ સિસ્ટમ.",
       "hallucinated_answer": "એક નવી બેંક."
-    },
-    {
-      "id": "bn_018",
-      "language": "bengali",
-      "domain": "banking",
-      "question": "ইউপিআই (UPI) কী?",
-      "context": [
-        "ইউপিআই হল টাকা পাঠানোর একটি ডিজিটাল পেমেন্ট সিস্টেম।"
-      ],
-      "ground_truth_answer": "ডিজিটাল পেমেন্ট সিস্টেম।",
-      "hallucinated_answer": "একটি নতুন ব্যাঙ্ক।"
-    },
-    {
-      "id": "ta_018",
-      "language": "tamil",
-      "domain": "banking",
-      "question": "யுபிஐ (UPI) என்றால் என்ன?",
-      "context": [
-        "யுபிஐ என்பது பணம் அனுப்புவதற்கான டிஜிட்டல் கட்டண முறை."
-      ],
-      "ground_truth_answer": "டிஜிட்டல் கட்டண முறை.",
-      "hallucinated_answer": "ஒரு புதிய வங்கி."
     },
     {
       "id": "gu_019",
@@ -1731,28 +1995,6 @@
       "hallucinated_answer": "સરકારી ટેક્સ."
     },
     {
-      "id": "bn_019",
-      "language": "bengali",
-      "domain": "banking",
-      "question": "কেওয়াইসি (KYC) মানে কী?",
-      "context": [
-        "আপনার গ্রাহককে জানুন (KYC)-এর জন্য আধার বা প্যান কার্ড প্রয়োজন।"
-      ],
-      "ground_truth_answer": "আপনার গ্রাহককে জানুন।",
-      "hallucinated_answer": "সরকারি ট্যাক্স।"
-    },
-    {
-      "id": "ta_019",
-      "language": "tamil",
-      "domain": "banking",
-      "question": "கேஒய்சி (KYC) என்றால் என்ன?",
-      "context": [
-        "உங்கள் வாடிக்கையாளரை அறிந்து கொள்ளுங்கள் (KYC) என்பதற்கு ஆதார் அல்லது பான் தேவை."
-      ],
-      "ground_truth_answer": "உங்கள் வாடிக்கையாளரை அறிந்து கொள்ளுங்கள்.",
-      "hallucinated_answer": "அரசு வரி."
-    },
-    {
       "id": "gu_020",
       "language": "gujarati",
       "domain": "agriculture",
@@ -1762,28 +2004,6 @@
       ],
       "ground_truth_answer": "પાણીની બચત.",
       "hallucinated_answer": "પાણીનો બગાડ."
-    },
-    {
-      "id": "bn_020",
-      "language": "bengali",
-      "domain": "agriculture",
-      "question": "ড্রিপ সেচের সুবিধা কী?",
-      "context": [
-        "জল সাশ্রয় করে এবং ফসলের ফলন বাড়ায়।"
-      ],
-      "ground_truth_answer": "জল সাশ্রয় করে।",
-      "hallucinated_answer": "জল নষ্ট করে।"
-    },
-    {
-      "id": "ta_020",
-      "language": "tamil",
-      "domain": "agriculture",
-      "question": "சொட்டு நீர் பாசனத்தின் பயன் என்ன?",
-      "context": [
-        "நீரை சேமித்து பயிர் விளைச்சலை அதிகரிக்கிறது."
-      ],
-      "ground_truth_answer": "நீரை சேமிக்கிறது.",
-      "hallucinated_answer": "நீரை வீணாக்குகிறது."
     },
     {
       "id": "gu_021",
@@ -1797,28 +2017,6 @@
       "hallucinated_answer": "365 દિવસ."
     },
     {
-      "id": "bn_021",
-      "language": "bengali",
-      "domain": "government_scheme",
-      "question": "মনরেগাতে কত দিনের কাজ পাওয়া যায়?",
-      "context": [
-        "১০০ দিনের কর্মসংস্থানের গ্যারান্টি।"
-      ],
-      "ground_truth_answer": "১০০ দিন।",
-      "hallucinated_answer": "৩৬৫ দিন।"
-    },
-    {
-      "id": "ta_021",
-      "language": "tamil",
-      "domain": "government_scheme",
-      "question": "மகாத்மா காந்தி தேசிய ஊரக வேலை உறுதித் திட்டத்தில் (MGNREGA) எத்தனை நாட்கள் வேலை கிடைக்கும்?",
-      "context": [
-        "100 நாட்கள் வேலை உத்தரவாதம்."
-      ],
-      "ground_truth_answer": "100 நாட்கள்.",
-      "hallucinated_answer": "365 நாட்கள்."
-    },
-    {
       "id": "gu_022",
       "language": "gujarati",
       "domain": "health",
@@ -1828,28 +2026,6 @@
       ],
       "ground_truth_answer": "ખાંડ ઓછી ખાવી અને કસરત કરવી.",
       "hallucinated_answer": "રોજ મીઠાઈ ખાવી."
-    },
-    {
-      "id": "bn_022",
-      "language": "bengali",
-      "domain": "health",
-      "question": "ডায়াবেটিস প্রতিরোধ কীভাবে করবেন?",
-      "context": [
-        "চিনি খাওয়া কমান এবং ব্যায়াম করুন।"
-      ],
-      "ground_truth_answer": "কম চিনি খাওয়া এবং ব্যায়াম করা।",
-      "hallucinated_answer": "প্রতিদিন মিষ্টি খাওয়া।"
-    },
-    {
-      "id": "ta_022",
-      "language": "tamil",
-      "domain": "health",
-      "question": "சர்க்கரை நோயை எவ்வாறு தடுப்பது?",
-      "context": [
-        "சர்க்கரை உட்கொள்வதை குறைத்து உடற்பயிற்சி செய்ய வேண்டும்."
-      ],
-      "ground_truth_answer": "குறைவான சர்க்கரை மற்றும் உடற்பயிற்சி.",
-      "hallucinated_answer": "தினமும் இனிப்பு சாப்பிட வேண்டும்."
     },
     {
       "id": "gu_023",
@@ -1863,56 +2039,12 @@
       "hallucinated_answer": "વૃદ્ધાવસ્થા પેન્શન માટે."
     },
     {
-      "id": "bn_023",
-      "language": "bengali",
-      "domain": "government_scheme",
-      "question": "সুকন্যা সমৃদ্ধি যোজনা কীসের জন্য?",
-      "context": [
-        "মেয়েদের শিক্ষা ও বিয়ের জন্য টাকা জমানো।"
-      ],
-      "ground_truth_answer": "মেয়েদের ভবিষ্যতের জন্য।",
-      "hallucinated_answer": "বার্ধক্য ভাতার জন্য।"
-    },
-    {
-      "id": "ta_023",
-      "language": "tamil",
-      "domain": "government_scheme",
-      "question": "சுகன்யா சம்ருத்தி திட்டம் எதற்காக?",
-      "context": [
-        "பெண் குழந்தைகளின் கல்வி மற்றும் திருமணத்திற்காக பணம் சேமிக்க."
-      ],
-      "ground_truth_answer": "பெண் குழந்தைகளின் எதிர்காலத்திற்காக.",
-      "hallucinated_answer": "முதியோர் ஓய்வூதியத்திற்காக."
-    },
-    {
       "id": "gu_024",
       "language": "gujarati",
       "domain": "education",
       "question": "NEP 2020 નું માળખું શું છે?",
       "context": [
         "આ માળખું 5+3+3+4 છે."
-      ],
-      "ground_truth_answer": "5+3+3+4.",
-      "hallucinated_answer": "10+2."
-    },
-    {
-      "id": "bn_024",
-      "language": "bengali",
-      "domain": "education",
-      "question": "এনইপি (NEP) ২০২০-এর কাঠামো কী?",
-      "context": [
-        "কাঠামোটি হল ৫+৩+৩+৪।"
-      ],
-      "ground_truth_answer": "৫+৩+৩+৪।",
-      "hallucinated_answer": "১০+২।"
-    },
-    {
-      "id": "ta_024",
-      "language": "tamil",
-      "domain": "education",
-      "question": "தேசிய கல்வி கொள்கை (NEP) 2020 இன் கட்டமைப்பு என்ன?",
-      "context": [
-        "கட்டமைப்பு 5+3+3+4 ஆகும்."
       ],
       "ground_truth_answer": "5+3+3+4.",
       "hallucinated_answer": "10+2."
@@ -1929,28 +2061,6 @@
       "hallucinated_answer": "મફત હવાઈ મુસાફરી."
     },
     {
-      "id": "bn_025",
-      "language": "bengali",
-      "domain": "banking",
-      "question": "কিষাণ ক্রেডিট কার্ড কী?",
-      "context": [
-        "কৃষকদের কম সুদে ঋণ প্রদান করে।"
-      ],
-      "ground_truth_answer": "কম সুদে ঋণ।",
-      "hallucinated_answer": "বিনামূল্যে বিমান ভ্রমণ।"
-    },
-    {
-      "id": "ta_025",
-      "language": "tamil",
-      "domain": "banking",
-      "question": "கிசான் கிரெடிட் கார்டு என்றால் என்ன?",
-      "context": [
-        "விவசாயிகளுக்கு குறைந்த வட்டியில் கடன் வழங்குகிறது."
-      ],
-      "ground_truth_answer": "குறைந்த வட்டியில் கடன்.",
-      "hallucinated_answer": "இலவச விமான பயணம்."
-    },
-    {
       "id": "gu_026",
       "language": "gujarati",
       "domain": "health",
@@ -1960,28 +2070,6 @@
       ],
       "ground_truth_answer": "લોહીની કમી.",
       "hallucinated_answer": "હાડકાનો રોગ."
-    },
-    {
-      "id": "bn_026",
-      "language": "bengali",
-      "domain": "health",
-      "question": "রক্তাল্পতা কী?",
-      "context": [
-        "শরীরে রক্তের অভাব।"
-      ],
-      "ground_truth_answer": "রক্তের অভাব।",
-      "hallucinated_answer": "হাড়ের রোগ।"
-    },
-    {
-      "id": "ta_026",
-      "language": "tamil",
-      "domain": "health",
-      "question": "இரத்த சோகை என்றால் என்ன?",
-      "context": [
-        "உடலில் இரத்த பற்றாக்குறை."
-      ],
-      "ground_truth_answer": "இரத்த பற்றாக்குறை.",
-      "hallucinated_answer": "எலும்பு நோய்."
     },
     {
       "id": "gu_027",
@@ -1995,28 +2083,6 @@
       "hallucinated_answer": "નવા શહેરો બનાવવા."
     },
     {
-      "id": "bn_027",
-      "language": "bengali",
-      "domain": "government_scheme",
-      "question": "স্বচ্ছ ভারত অভিযান কী?",
-      "context": [
-        "দেশকে পরিষ্কার রাখা এবং খোলা জায়গায় শৌচকর্ম মুক্ত করা।"
-      ],
-      "ground_truth_answer": "দেশকে পরিষ্কার রাখা।",
-      "hallucinated_answer": "নতুন শহর তৈরি করা।"
-    },
-    {
-      "id": "ta_027",
-      "language": "tamil",
-      "domain": "government_scheme",
-      "question": "தூய்மை இந்தியா திட்டம் என்றால் என்ன?",
-      "context": [
-        "நாட்டை தூய்மையாக வைத்திருக்கவும், திறந்தவெளியில் மலம் கழிப்பதை ஒழிக்கவும்."
-      ],
-      "ground_truth_answer": "நாட்டை தூய்மையாக வைத்திருக்க.",
-      "hallucinated_answer": "புதிய நகரங்களை உருவாக்க."
-    },
-    {
       "id": "gu_028",
       "language": "gujarati",
       "domain": "banking",
@@ -2026,28 +2092,6 @@
       ],
       "ground_truth_answer": "ઇન્ટરનેટ બેન્કિંગ.",
       "hallucinated_answer": "એક રમત."
-    },
-    {
-      "id": "bn_028",
-      "language": "bengali",
-      "domain": "banking",
-      "question": "নেট ব্যাঙ্কিং কী?",
-      "context": [
-        "ইন্টারনেটের মাধ্যমে বাড়ি থেকে ব্যাঙ্কের কাজ করা।"
-      ],
-      "ground_truth_answer": "ইন্টারনেট ব্যাঙ্কিং।",
-      "hallucinated_answer": "একটি খেলা।"
-    },
-    {
-      "id": "ta_028",
-      "language": "tamil",
-      "domain": "banking",
-      "question": "நெட் பேங்கிங் என்றால் என்ன?",
-      "context": [
-        "இணையம் மூலம் வீட்டிலிருந்தபடியே வங்கி பணிகளை செய்வது."
-      ],
-      "ground_truth_answer": "இணைய வங்கி.",
-      "hallucinated_answer": "ஒரு விளையாட்டு."
     },
     {
       "id": "gu_029",
@@ -2061,28 +2105,6 @@
       "hallucinated_answer": "રોજ."
     },
     {
-      "id": "bn_029",
-      "language": "bengali",
-      "domain": "agriculture",
-      "question": "সার কখন প্রয়োগ করতে হবে?",
-      "context": [
-        "মাটি পরীক্ষার পর প্রয়োজন অনুযায়ী।"
-      ],
-      "ground_truth_answer": "মাটি পরীক্ষার পর।",
-      "hallucinated_answer": "প্রতিদিন।"
-    },
-    {
-      "id": "ta_029",
-      "language": "tamil",
-      "domain": "agriculture",
-      "question": "உரம் எப்போது போட வேண்டும்?",
-      "context": [
-        "மண் பரிசோதனைக்கு பிறகு தேவைக்கேற்ப."
-      ],
-      "ground_truth_answer": "மண் பரிசோதனைக்கு பிறகு.",
-      "hallucinated_answer": "தினமும்."
-    },
-    {
       "id": "gu_030",
       "language": "gujarati",
       "domain": "government_scheme",
@@ -2092,28 +2114,6 @@
       ],
       "ground_truth_answer": "ઘર બનાવવા માટે મદદ.",
       "hallucinated_answer": "મફત કાર."
-    },
-    {
-      "id": "bn_030",
-      "language": "bengali",
-      "domain": "government_scheme",
-      "question": "পিএম আবাস যোজনা কী?",
-      "context": [
-        "গরিব মানুষের বাড়ি তৈরির জন্য আর্থিক সাহায্য।"
-      ],
-      "ground_truth_answer": "বাড়ি তৈরির জন্য সাহায্য।",
-      "hallucinated_answer": "বিনামূল্যে গাড়ি।"
-    },
-    {
-      "id": "ta_030",
-      "language": "tamil",
-      "domain": "government_scheme",
-      "question": "பிரதம மந்திரி ஆவாஸ் யோஜனா என்றால் என்ன?",
-      "context": [
-        "ஏழைகள் வீடு கட்ட நிதி உதவி."
-      ],
-      "ground_truth_answer": "வீடு கட்ட உதவி.",
-      "hallucinated_answer": "இலவச கார்கள்."
     }
   ]
 }
