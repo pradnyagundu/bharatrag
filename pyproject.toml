@@ -45,6 +45,10 @@ langchain = [
 llamaindex = [
     "llama-index-core>=0.10.0",
 ]
+dashboard = [
+    "streamlit>=1.28.0",
+    "plotly>=5.18.0",
+]
 
 [project.urls]
 Homepage = "https://github.com/pradnyagundu/bharatrag"
@@ -52,4 +56,4 @@ Repository = "https://github.com/pradnyagundu/bharatrag"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["bharatrag*"]
+include = ["bharatrag*", "dashboard*"]
