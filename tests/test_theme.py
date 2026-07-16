@@ -32,17 +32,18 @@ def test_theme_uses_the_dashboard_palette():
         TEXT_SECONDARY,
         BORDER,
     } == {
-        "#4F46E5",
-        "#4338CA",
+        "#101330",
+        "#0A1255",
         "#14B8A6",
         "#10B981",
         "#F59E0B",
         "#EF4444",
-        "#F8FAFC",
-        "#FFFFFF",
+        "#E8EAEF",
+        "#F9F8F8",
+        "#0A1225",
         "#0F172A",
         "#64748B",
-        "#E2E8F0",
+        "#1A1C21",
     }
 
 

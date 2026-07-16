@@ -22,18 +22,18 @@ structure, and user actions remain unchanged.
 
 | Token | Value | Use |
 | --- | --- | --- |
-| Primary | `#4F46E5` | Primary actions, active states, neutral evaluation data |
-| Primary hover | `#4338CA` | Primary-action hover |
+| Primary | `#101330` | Primary actions, active states, neutral evaluation data |
+| Primary hover | `#0A1255` | Primary-action hover |
 | Accent | `#14B8A6` | Secondary analytical emphasis |
 | Success | `#10B981` | Good scores and correct-answer comparisons |
 | Warning | `#F59E0B` | Moderate scores |
 | Danger | `#EF4444` | Poor scores and hallucinated-answer comparisons |
-| Background | `#F8FAFC` | Application canvas |
-| Surface | `#FFFFFF` | Cards, forms, tables, expanders |
-| Sidebar | `#0F172A` | Product navigation |
+| Background | `#E8EAEF` | Application canvas |
+| Surface | `#F9F8F8` | Cards, forms, tables, expanders |
+| Sidebar | `#0A1225` | Product navigation |
 | Primary text | `#0F172A` | Headings and controls |
 | Secondary text | `#64748B` | Supporting copy and labels |
-| Borders | `#E2E8F0` | Control, card, and table separation |
+| Borders | `#1A1C21` | Control, card, and table separation |
 
 ## Accessibility decisions
 
