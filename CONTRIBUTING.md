@@ -32,6 +32,13 @@ pytest tests/ -v
    pytest tests/ -v
    ```
 
+   By default, pytest runs the fast suite only. Fast tests do not download
+   embedding models. Run model-dependent integration tests separately when
+   changing embedding/model behavior:
+   ```bash
+   pytest tests/ -m "integration" -v
+   ```
+
 ## Code Style
 
 - Follow PEP 8
