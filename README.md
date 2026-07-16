@@ -47,6 +47,75 @@ BharatRAG computes the **RAG Triad** in Indian languages:
 pip install bharatrag
 ```
 
+## Running the Streamlit Dashboard
+
+The optional dashboard provides an interactive way to run BharatRAG evaluations,
+explore the bundled benchmark, and compare language-level results.
+
+```bash
+git clone https://github.com/pradnyagundu/bharatrag.git
+cd bharatrag
+pip install -e ".[dashboard]"
+streamlit run streamlit_app.py
+```
+
+Open the local URL printed by Streamlit. The first evaluation for a language may
+take longer because its embedding model is loaded locally. The dashboard needs
+no API key and keeps manual input in the local Streamlit process.
+
+If PyPI is unavailable but the dashboard dependencies are already installed,
+avoid dependency resolution and install the source checkout directly:
+
+```bash
+python -m pip install --no-build-isolation --no-deps -e .
+python -m streamlit run streamlit_app.py
+```
+
+Use this constrained-network fallback only after confirming that `streamlit` and
+`plotly` are available in the same Python environment.
+
+The dashboard adds two optional dependencies only:
+
+- `streamlit` for the application interface
+- `plotly` for interactive charts
+
+### Dashboard tour
+
+- **Evaluation:** Choose a supported language, then evaluate one example or a
+  batch. Four status-aware metric cards and expandable per-sample details make
+  weak groundedness easy to spot.
+- **Analytics:** View a metric comparison bar chart, a score histogram for
+  multi-sample runs, and a RAG-triad radar chart.
+- **Benchmark Explorer:** Filter the 120 bundled records by language and browse
+  their question, retrieved context, correct answer, and hallucinated answer.
+- **Language Comparison:** Run the benchmark across its supported languages to
+  compare correct and hallucinated answer averages in a grouped bar chart.
+
+The dashboard is intentionally a presentation layer: all scores are produced by
+the existing `bharatrag.evaluate` API and BharatRAG metric classes.
+
+### Interface design system
+
+The dashboard uses a unified, accessibility-conscious visual system designed
+for professional AI tooling. It pairs an Indigo primary action colour with
+semantic Green, Amber, and Red score states; white surfaces; an Indigo focus
+ring; and a dark Slate navigation sidebar. The Streamlit theme lives in
+`.streamlit/config.toml`, while shared CSS and Plotly tokens are maintained in
+`dashboard/theme.py`. This keeps native Streamlit controls, metric cards, and
+analytics visually consistent without changing any evaluation workflow.
+
+### Example screenshot descriptions
+
+1. **Manual evaluation workspace:** a dark navigation sidebar sits beside a
+   gradient BharatRAG header, question/context/answer inputs, and four white
+   score cards with coloured status chips and progress bars.
+2. **Benchmark comparison:** the correct and hallucinated answer variants are
+   shown in one metric table, with a grouped Plotly chart and radar profile
+   making groundedness differences immediately visible.
+3. **Benchmark explorer:** language-filtered benchmark samples present their
+   context chunks alongside clearly separated correct and hallucinated answers,
+   with Previous and Next controls for a polished demo flow.
+
 ---
 
 ## Quick Start
@@ -233,7 +302,7 @@ pytest tests/ -v
 - [x] LangChain integration
 - [x] LlamaIndex integration
 - [ ] Punjabi support
-- [ ] Streamlit UI for interactive evaluation
+- [x] Streamlit UI for interactive evaluation
 - [ ] Hinglish / code-switching support
 - [ ] Benchmarking vs RAGAS / DeepEval
 - [ ] Expand benchmark dataset to 500+ examples
