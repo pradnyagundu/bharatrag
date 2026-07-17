@@ -11,7 +11,7 @@ BharatRAG is the first open-source RAG evaluation library built specifically for
 
 Existing tools like RAGAS are built and tested on English data. BharatRAG fills the gap — giving developers a reliable way to measure RAG quality in Indic languages, with no API key and no cost.
 
-> **BharatRAG** was created and is maintained by **[Pradnya Gundu](https://github.com/pradnyagundu)** — original author and project lead. First released July 2026.
+> **BharatRAG** was created and is maintained by **[Pradnya Gundu](https://github.com/pradnyagundu)** — original author and project lead. First released July 4, 2026.
 
 ---
 
