@@ -1,7 +1,7 @@
 """
 Indic Embeddings — loads multilingual embedding models
 that understand Indian languages: Hindi, Marathi, Tamil,
-Bengali, Telugu, Gujarati, and English.
+Bengali, Telugu, Gujarati, Punjabi, and English.
 """
 
 import logging
@@ -33,6 +33,7 @@ INDIC_MODELS = {
     "bengali": "l3cube-pune/bengali-sentence-bert-nli",
     "telugu": "l3cube-pune/telugu-sentence-bert-nli",
     "gujarati": "l3cube-pune/gujarati-sentence-bert-nli",
+    "punjabi": "l3cube-pune/punjabi-sentence-bert-nli",
     "english": "sentence-transformers/all-MiniLM-L6-v2",
 }
 # Module-level cache: one SentenceTransformer instance per language
