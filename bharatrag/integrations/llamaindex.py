@@ -18,7 +18,7 @@ class BharatRAGLlamaIndexEvaluator(BaseEvaluator):
 
         Args:
             metric: The specific metric to evaluate ("overall", "context_relevance", "groundedness", "answer_relevance")
-            language: Language of the text (see bharatrag.SUPPORTED_LANGUAGES
+            language: Language of the text (see bharatrag.embeddings.indic_embeddings.SUPPORTED_LANGUAGES
                       for the full list).
             **kwargs: Addtional arguments to pass to the evaluate function (e.g. groundedness_threshold).
         """

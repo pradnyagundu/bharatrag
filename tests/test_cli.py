@@ -83,8 +83,8 @@ class TestCLIEvaluate:
             "--language", "hindi",
             "--output", str(out),
         ])
-        # File should be created even if evaluation partially fails in CI
-        # We just test that the CLI ran without a crash (exit 0 requires model)
+        # Only assert output file contents when evaluation succeeds; CI may fail
+        # to download/load models, which can cause a non-zero exit code.
         if result.returncode == 0:
             assert out.exists()
             with open(out, encoding="utf-8") as f:
