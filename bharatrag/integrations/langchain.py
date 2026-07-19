@@ -32,7 +32,8 @@ class BharatRAGLangChainEvaluator(StringEvaluator):
         Args:
             metric: The specific metric to evaluate ("overall", "context_relevance",
                 "groundedness", "answer_relevance").
-            language: Language of the text ("hindi", "marathi", "tamil", "english").
+            language: Language of the text (see bharatrag.embeddings.indic_embeddings.SUPPORTED_LANGUAGES
+                      for the full list).
             **kwargs: Additional arguments to pass to the evaluate function
                 (e.g. groundedness_threshold).
         """

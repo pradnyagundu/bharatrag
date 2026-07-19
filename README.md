@@ -118,7 +118,24 @@ analytics visually consistent without changing any evaluation workflow.
 
 ---
 
-## Quick Start
+## 💻 Command-Line Interface (CLI)
+
+BharatRAG comes with a powerful CLI to run evaluations directly from your terminal.
+
+```bash
+# Evaluate a JSON dataset and save the results
+bharatrag evaluate --data data/benchmark.json --language hindi --output results.json
+
+# List all supported languages
+bharatrag languages
+
+# See all options
+bharatrag --help
+```
+
+The CLI expects the JSON file to be in the same structure as `data/benchmark.json` (a list of examples or a dictionary with a `"data"` key).
+
+## 🚀 Quick Start (Python)
 
 ```python
 from bharatrag import evaluate

@@ -46,15 +46,11 @@ from dashboard.visualizations import (
 LOGGER = logging.getLogger(__name__)
 ROOT_DIR = Path(__file__).resolve().parent
 BENCHMARK_PATH = ROOT_DIR / "data" / "benchmark.json"
-LANGUAGE_LABELS = {
-    "hindi": "Hindi",
-    "marathi": "Marathi",
-    "tamil": "Tamil",
-    "bengali": "Bengali",
-    "telugu": "Telugu",
-    "gujarati": "Gujarati",
-    "english": "English",
-}
+# Dynamic: generated from the core language registry so new languages
+# appear in the UI automatically without editing this file.
+from bharatrag.embeddings.indic_embeddings import SUPPORTED_LANGUAGES as _SUPPORTED_LANGUAGES
+LANGUAGE_LABELS = {lang: lang.capitalize() for lang in _SUPPORTED_LANGUAGES}
+
 EMPTY_BATCH_ROWS = [
     {"question": "", "contexts": "", "answer": ""},
     {"question": "", "contexts": "", "answer": ""},

@@ -3,14 +3,19 @@ BharatRAG — RAG Evaluation Library for Indian Languages
 Author: Pradnya Gundu
 """
 
+import os
+os.environ.setdefault("TOKENIZERS_PARALLELISM", "false")
+
+
 import logging
+logger = logging.getLogger(__name__)
 
 from bharatrag.embeddings.indic_embeddings import IndicEmbedder
 from bharatrag.metrics.context_relevance import ContextRelevance
 from bharatrag.metrics.groundedness import Groundedness
 from bharatrag.metrics.answer_relevance import AnswerRelevance
 
-logger = logging.getLogger(__name__)
+
 
 __all__ = [
     "evaluate",
@@ -28,7 +33,9 @@ except Exception:
 
 __author__ = "Pradnya Gundu"
 
-_SUPPORTED_LANGUAGES = ("hindi", "marathi", "tamil", "bengali", "telugu", "gujarati", "punjabi", "english")
+# Source of truth: indic_embeddings.INDIC_MODELS — never hardcode languages here.
+from bharatrag.embeddings.indic_embeddings import SUPPORTED_LANGUAGES as _SUPPORTED_LANGUAGES  # noqa: E402
+
 
 
 def evaluate(
@@ -45,8 +52,8 @@ def evaluate(
         questions: list of questions in the target language
         contexts:  list of lists — retrieved context chunks per question
         answers:   list of generated answers
-        language:  one of "hindi", "marathi", "tamil", "bengali", "telugu",
-                   "gujarati", "punjabi", or "english" (default: "hindi")
+        language:  one of the supported languages (run 'bharatrag languages'
+                   for the full list, or inspect bharatrag._SUPPORTED_LANGUAGES)
 
     Returns:
         dict with scores for each metric

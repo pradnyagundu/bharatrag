@@ -219,3 +219,7 @@ __marimo__/
 
 # macOS desktop services
 .DS_Store
+
+# Temporary Screenshots
+screenshots/
+
