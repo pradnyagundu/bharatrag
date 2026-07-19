@@ -17,15 +17,9 @@ from bharatrag.metrics.context_relevance import ContextRelevance
 from bharatrag.metrics.groundedness import Groundedness
 
 
-SUPPORTED_LANGUAGES: Tuple[str, ...] = (
-    "hindi",
-    "marathi",
-    "tamil",
-    "bengali",
-    "telugu",
-    "gujarati",
-    "english",
-)
+# Dynamic: always in sync with the core library — never hardcode here.
+from bharatrag.embeddings.indic_embeddings import SUPPORTED_LANGUAGES
+
 
 METRIC_LABELS = {
     "context_relevance": "Context Relevance",

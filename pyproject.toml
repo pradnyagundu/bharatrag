@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "bharatrag"
-version = "0.1.12"
+version = "0.1.13"
 description = "RAG evaluation library for Indian languages (Hindi, Marathi, Tamil, Bengali, Telugu, Gujarati, Punjabi)"
 readme = "README.md"
 license = "MIT"
@@ -49,6 +49,9 @@ dashboard = [
     "streamlit>=1.28.0",
     "plotly>=5.18.0",
 ]
+
+[project.scripts]
+bharatrag = "bharatrag.cli:main"
 
 [project.urls]
 Homepage = "https://github.com/pradnyagundu/bharatrag"

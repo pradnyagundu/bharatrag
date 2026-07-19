@@ -2,11 +2,39 @@
 Indic Embeddings — loads multilingual embedding models
 that understand Indian languages: Hindi, Marathi, Tamil,
 Bengali, Telugu, Gujarati, Punjabi, and English.
+
+Design: SentenceTransformer is imported lazily (inside _load_model) so that
+importing this module is fast and safe — it does NOT load PyTorch at import
+time. This lets the CLI, tests, and any other code read INDIC_MODELS freely
+without triggering the macOS tokenizer deadlock.
 """
 
 import logging
-from sentence_transformers import SentenceTransformer
 import numpy as np
+
+
+logger = logging.getLogger(__name__)
+
+
+# ── Language → Model registry ──────────────────────────────────────────────────
+# SINGLE SOURCE OF TRUTH. Add a new language here and the entire library
+# (CLI, evaluate(), tests, IndicEmbedder validation) picks it up automatically.
+INDIC_MODELS: dict = {
+    "hindi":    "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "marathi":  "l3cube-pune/marathi-sentence-bert-nli",
+    "tamil":    "l3cube-pune/tamil-sentence-bert-nli",
+    "bengali":  "l3cube-pune/bengali-sentence-bert-nli",
+    "telugu":   "l3cube-pune/telugu-sentence-bert-nli",
+    "gujarati": "l3cube-pune/gujarati-sentence-bert-nli",
+    "punjabi":  "l3cube-pune/punjabi-sentence-bert-nli",
+    "english":  "sentence-transformers/all-MiniLM-L6-v2",
+}
+
+# Derived — always consistent, no duplication.
+SUPPORTED_LANGUAGES: tuple = tuple(INDIC_MODELS.keys())
+
+# Module-level cache: one SentenceTransformer instance per language
+_model_cache: dict = {}
 
 
 def _cosine_similarity_matrix(a: np.ndarray, b: np.ndarray) -> np.ndarray:
@@ -20,24 +48,6 @@ def _cosine_similarity_matrix(a: np.ndarray, b: np.ndarray) -> np.ndarray:
     a_norm = a / a_n
     b_norm = b / b_n
     return a_norm @ b_norm.T
-
-
-logger = logging.getLogger(__name__)
-
-
-# Best free models for Indian languages
-INDIC_MODELS = {
-    "hindi": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
-    "marathi": "l3cube-pune/marathi-sentence-bert-nli",
-    "tamil": "l3cube-pune/tamil-sentence-bert-nli",
-    "bengali": "l3cube-pune/bengali-sentence-bert-nli",
-    "telugu": "l3cube-pune/telugu-sentence-bert-nli",
-    "gujarati": "l3cube-pune/gujarati-sentence-bert-nli",
-    "punjabi": "l3cube-pune/punjabi-sentence-bert-nli",
-    "english": "sentence-transformers/all-MiniLM-L6-v2",
-}
-# Module-level cache: one SentenceTransformer instance per language
-_model_cache = {}
 
 
 class IndicEmbedder:
@@ -60,8 +70,8 @@ class IndicEmbedder:
     def __init__(self, language: str = "hindi"):
         """
         Args:
-            language: one of "hindi", "marathi", "tamil", "bengali",
-                      "telugu", "gujarati", or "english"
+            language: one of the languages in INDIC_MODELS
+                      (run 'bharatrag languages' for the full list)
         """
         if language not in INDIC_MODELS:
             raise ValueError(
@@ -74,9 +84,15 @@ class IndicEmbedder:
         self.model = self._load_model(language, self.model_name)
 
     @staticmethod
-    def _load_model(language: str, model_name: str) -> SentenceTransformer:
-        """Load model from module-level cache, or download and cache it."""
+    def _load_model(language: str, model_name: str):
+        """
+        Load model from module-level cache, or download and cache it.
+        SentenceTransformer is imported HERE (lazily) — not at the top of the
+        module — so importing indic_embeddings never triggers PyTorch loading.
+        """
         if language not in _model_cache:
+            # Lazy import: PyTorch only loads when a model is actually needed.
+            from sentence_transformers import SentenceTransformer
             logger.info(
                 "Loading embedding model for %s: %s", language, model_name
             )
