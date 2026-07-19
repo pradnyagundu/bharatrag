@@ -326,6 +326,10 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def main():
+    # Always print the banner if the user asks for help or runs the tool without args
+    if len(sys.argv) == 1 or "-h" in sys.argv or "--help" in sys.argv:
+        _print_banner()
+
     parser = build_parser()
     args = parser.parse_args()
 
@@ -334,6 +338,7 @@ def main():
         sys.exit(0)
 
     args.func(args)
+
 
 
 if __name__ == "__main__":
