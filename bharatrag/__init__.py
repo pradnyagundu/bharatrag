@@ -5,9 +5,7 @@ Author: Pradnya Gundu
 
 import os
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
-# Crucial for macOS: prevents transformers from auto-loading TensorFlow/gRPC which causes [mutex.cc : 452] deadlocks
-os.environ["USE_TF"] = "0"
-os.environ["USE_TORCH"] = "1"
+
 
 import logging
 logger = logging.getLogger(__name__)
