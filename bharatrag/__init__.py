@@ -9,6 +9,12 @@ os.environ["TOKENIZERS_PARALLELISM"] = "false"
 import logging
 logger = logging.getLogger(__name__)
 
+from bharatrag.embeddings.indic_embeddings import IndicEmbedder
+from bharatrag.metrics.context_relevance import ContextRelevance
+from bharatrag.metrics.groundedness import Groundedness
+from bharatrag.metrics.answer_relevance import AnswerRelevance
+
+
 
 __all__ = [
     "evaluate",
