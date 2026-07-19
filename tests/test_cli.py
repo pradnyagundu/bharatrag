@@ -5,8 +5,6 @@ Tests for the BharatRAG CLI.
 import json
 import subprocess
 import sys
-import tempfile
-import os
 import pytest
 
 
