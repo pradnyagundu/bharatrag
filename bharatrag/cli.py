@@ -18,6 +18,9 @@ import sys
 import os
 
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
+# Crucial for macOS: prevents transformers from auto-loading TensorFlow/gRPC which causes [mutex.cc : 452] deadlocks
+os.environ["USE_TF"] = "0"
+os.environ["USE_TORCH"] = "1"
 
 try:
     from importlib.metadata import version as _metadata_version
