@@ -33,6 +33,11 @@ jobs:
         pip install -e .
         pip install "pytest>=7.0,<9.0"
 
-    - name: Run tests
+    - name: Run fast tests
       run: |
         pytest tests/ -v
+
+    - name: Run integration tests
+      if: github.ref == 'refs/heads/main'
+      run: |
+        pytest tests/ -m "integration" -v

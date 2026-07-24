@@ -57,3 +57,9 @@ Repository = "https://github.com/pradnyagundu/bharatrag"
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["bharatrag*", "dashboard*"]
+
+[tool.pytest.ini_options]
+addopts = "-m 'not integration'"
+markers = [
+    "integration: tests that load real embedding models or require network/cache access",
+]

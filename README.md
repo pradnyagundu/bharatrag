@@ -289,6 +289,14 @@ pip install -e ".[dev]"
 pytest tests/ -v
 ```
 
+By default, pytest runs the fast suite only. These tests use deterministic
+fake embedders and do not download embedding models. To run model-dependent
+integration tests explicitly:
+
+```bash
+pytest tests/ -m "integration" -v
+```
+
 ---
 
 ## Roadmap
